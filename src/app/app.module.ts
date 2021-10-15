@@ -8,12 +8,13 @@ import { SharedModule } from './shared/shared.module';
 import { AppComponent } from './app.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { HomeComponent } from './home/home.component';
+import { SidenavComponent } from './sidenav/sidenav.component';
 
 @NgModule({
   declarations: [
     AppComponent, 
     NavigationComponent, 
-    HomeComponent
+    HomeComponent, SidenavComponent
   ],
   imports: [
     BrowserModule,
