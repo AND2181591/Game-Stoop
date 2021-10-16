@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GamesService } from '../games.service';
-import { Game } from '../shared/models/Game';
+
 
 @Component({
   selector: 'app-home',
@@ -8,15 +8,16 @@ import { Game } from '../shared/models/Game';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  games: Game[] = [];
+  games = [];
 
   constructor(private gameService: GamesService) { }
 
   ngOnInit(): void {
-    this.gameService.getGameList('metacritic', 'Halo')
-      .subscribe(results => {
-        console.log(results);
-      })
+    // this.gameService.getGameList()
+    //   .subscribe((result: any) => {
+    //     this.games = result;
+    //     console.log(this.games);
+    //   })
   }
 
 }

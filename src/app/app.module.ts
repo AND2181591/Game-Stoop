@@ -3,11 +3,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MaterialModule } from './material.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
+
 import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './shared/shared.module';
-
-import { HttpHeadersInterceptor } from './interceptors/http-headers.interceptor';
-import { HttpErrorsInterceptor } from './interceptors/http-errors.interceptor';
+import { GameHttpInterceptor } from './interceptors/game-http.interceptor';
 
 import { AppComponent } from './app.component';
 import { NavigationComponent } from './navigation/navigation.component';
@@ -24,6 +24,7 @@ import { SidenavComponent } from './sidenav/sidenav.component';
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule, 
+    FlexLayoutModule, 
     MaterialModule, 
     AppRoutingModule, 
     SharedModule
@@ -31,15 +32,10 @@ import { SidenavComponent } from './sidenav/sidenav.component';
   providers: [
     {
       provide: HTTP_INTERCEPTORS, 
-      useClass: HttpHeadersInterceptor, 
-      multi: true
-    }, 
-    {
-      provide: HTTP_INTERCEPTORS, 
-      useClass: HttpErrorsInterceptor, 
+      useClass: GameHttpInterceptor, 
       multi: true
     }
-  ],
+  ], 
   bootstrap: [AppComponent]
 })
 export class AppModule { }

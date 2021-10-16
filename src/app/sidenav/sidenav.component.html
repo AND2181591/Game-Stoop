@@ -1,10 +1,10 @@
-<div class="menu">
+<div class="menu" [ngClass.lt-sm]="'small'">
     <div class="menu__close">
         <h5>Shop</h5>
         <mat-icon class="menu__close__icon" (click)="onClose()">close</mat-icon>
     </div>
 
-    <h2 class="menu__header">Shop By Category</h2>
+    <h2 class="menu__header" [ngClass.lt-sm]="'small__header'">Shop By Category</h2>
     <mat-list class="menu__list">
         <mat-list-item class="menu__list__item">Video Games</mat-list-item>
     </mat-list>

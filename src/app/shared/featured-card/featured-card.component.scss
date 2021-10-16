@@ -1,5 +1,28 @@
 .card {
-    width: 400px;
-    height: 350px;
-    background-color: blue;
+    border: solid 0px red;
+    min-width: 179px;
+    max-width: 217px;
+    padding: 5px 0px;
+
+    &__image-container {
+        border: solid 0px blue;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+
+        &__img {
+            width: 70%;
+            max-width: 150px;
+        }
+    }
+
+    &__details {
+        border: solid 0px green;
+        padding: 5px 12px;
+    }
+
+    &__details h3, &__details h5 {
+        margin: 5px;
+    }
 }

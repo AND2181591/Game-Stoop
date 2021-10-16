@@ -1,15 +1,23 @@
-<mat-toolbar class="toolbar">
+<mat-toolbar 
+    class="toolbar"
+    [ngClass.lt-sm]="'small'">
 
     <button class="toolbar__menu-button" (click)="onOpen()">
         <mat-icon class="toolbar__menu-button__icon">menu</mat-icon>
         <span>Shop</span>
     </button>
-    <div class="toolbar__logo">
-        <h1 class="toolbar__logo__title">Game<span class="toolbar__logo__title--red">Stoop</span></h1>
+    <div 
+        class="toolbar__logo"
+        [ngClass.lt-md]="'small-logo'">
+        <h1 
+            class="toolbar__logo__title"
+            [ngClass.lt-md]="'small-text'">Game<span class="toolbar__logo__title--red" [ngClass.lt-md]="'small-text'">Stoop</span></h1>
         <mat-icon class="toolbar__logo__icon">house</mat-icon>
     </div>
 
-    <div class="toolbar__search">
+    <div 
+        class="toolbar__search"
+        [ngClass.lt-sm]="'small-search'">
         <button class="toolbar__search__icon">
             <mat-icon>search</mat-icon>
         </button>
@@ -19,8 +27,8 @@
             placeholder="Search games, consoles and more">
     </div>
 
-    <div class="toolbar__icons">
-        <mat-icon class="toolbar__icons__cart">shopping_cart</mat-icon>
+    <div [ngClass.lt-sm]="'small-icon'" class="toolbar__icons">
+        <mat-icon [ngClass.lt-sm]="'small-icon__cart'" class="toolbar__icons__cart">shopping_cart</mat-icon>
     </div>
-    
+
 </mat-toolbar>
