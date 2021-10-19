@@ -4,6 +4,11 @@
     max-width: 217px;
     padding: 5px 0px;
 
+    &:hover {
+        box-shadow: .2px .2px 4px #888;
+        cursor: pointer;
+    }
+
     &__image-container {
         border: solid 0px blue;
         width: 100%;

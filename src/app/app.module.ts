@@ -13,12 +13,15 @@ import { AppComponent } from './app.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { HomeComponent } from './home/home.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+
 
 @NgModule({
   declarations: [
     AppComponent, 
     NavigationComponent, 
-    HomeComponent, SidenavComponent
+    HomeComponent, 
+    SidenavComponent, PageNotFoundComponent
   ],
   imports: [
     BrowserModule,

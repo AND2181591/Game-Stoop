@@ -5,7 +5,38 @@
     </div>
 
     <h2 class="menu__header" [ngClass.lt-sm]="'small__header'">Shop By Category</h2>
+    
     <mat-list class="menu__list">
-        <mat-list-item class="menu__list__item">Video Games</mat-list-item>
+        <mat-list-item
+            class="menu__list__item"
+            (click)="onClose()"
+            routerLink="/ps5">
+            PlayStation 5
+            <mat-icon>chevron_right</mat-icon>
+        </mat-list-item>
+        
+        <mat-list-item
+            class="menu__list__item"
+            (click)="onClose()"
+            routerLink="/ps4">
+            PlayStation 4
+            <mat-icon>chevron_right</mat-icon>
+        </mat-list-item>
+        
+        <mat-list-item 
+            class="menu__list__item"
+            (click)="onClose()"
+            routerLink="/xbox-series-x">
+            Xbox Series X
+            <mat-icon>chevron_right</mat-icon>
+        </mat-list-item>
+        
+        <mat-list-item 
+            class="menu__list__item"
+            (click)="onClose()"
+            routerLink="/xbox-one">
+            Xbox One
+            <mat-icon>chevron_right</mat-icon>
+        </mat-list-item>
     </mat-list>
 </div>

@@ -1,0 +1,14 @@
+<div 
+    class="featured"
+    fxLayout="row wrap"
+    fxLayoutAlign="space-between"
+    fxLayoutAlign.sm="space-around"
+    fxLayoutAlign.xs="center">
+    <mat-spinner 
+        *ngIf="games.length === 0"
+        [strokeWidth]="2" 
+        [diameter]="80"></mat-spinner>
+    <app-featured-card 
+        *ngFor="let game of games" 
+        [game]="game"></app-featured-card>
+</div>

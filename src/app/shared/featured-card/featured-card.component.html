@@ -2,14 +2,14 @@
     <div class="card__image-container">
         <img 
             class="card__image-container__img"
-            src="/assets/gameplaceholder.png" 
-            alt="">
+            [src]="game.box_art" 
+            [alt]="game.game_name">
     </div>
     
     <div class="card__details">
         <h3>$59.99</h3>
-        <h5>Call of Duty: Vanguard</h5>
-        <h5>Xbox One</h5>
-        <h5>Release Date: 11/05/2021</h5>
+        <h5>{{ game.game_name }}</h5>
+        <h5>{{ game.platform }}</h5>
+        <h5>Release Date: {{ game.release_date | date }}</h5>
     </div>
 </div>

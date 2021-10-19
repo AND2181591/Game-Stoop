@@ -4,7 +4,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
-import { MatGridListModule } from '@angular/material/grid-list';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 
 @NgModule({
@@ -13,14 +13,14 @@ import { MatGridListModule } from '@angular/material/grid-list';
         MatIconModule, 
         MatSidenavModule, 
         MatListModule, 
-        MatGridListModule
+        MatProgressSpinnerModule
     ], 
     exports: [
         MatToolbarModule, 
         MatIconModule, 
         MatSidenavModule, 
         MatListModule, 
-        MatGridListModule
+        MatProgressSpinnerModule
     ]
 })
 export class MaterialModule {}
