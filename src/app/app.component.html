@@ -1,9 +1,23 @@
 <mat-sidenav-container>
     <mat-sidenav #sidenav>
-        <app-sidenav (close)="sidenav.close()"></app-sidenav>
+        <app-sidenav 
+            [topHeader]="'Shop'" 
+            [bigHeader]="'Shop By Category'"
+            (close)="sidenav.close()">
+        </app-sidenav>
+    </mat-sidenav>
+
+    <mat-sidenav position="end" #cartSidenav>
+        <app-sidenav 
+            [topHeader]="'Cart'" 
+            [bigHeader]="'Your Orders'"
+            (close)="cartSidenav.close()">
+        </app-sidenav>
     </mat-sidenav>
     <mat-sidenav-content>
-        <app-navigation (open)="sidenav.open()"></app-navigation>
+        <app-navigation 
+            (open)="sidenav.open()"
+            (openCart)="cartSidenav.open()"></app-navigation>
         <main class="container">
             <router-outlet></router-outlet>
         </main>

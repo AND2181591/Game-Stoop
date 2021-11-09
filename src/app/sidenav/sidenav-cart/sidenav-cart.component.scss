@@ -1,0 +1,18 @@
+.orders {
+    padding: 16px;
+}
+
+.btn-container button {
+    cursor: pointer;
+    color: #fff;
+    font-weight: 600;
+    background-color: #ff1900;
+    border: none;
+    padding: 10px;
+    width: 50%;
+
+    &:hover {
+        background-color: #c01300;
+        transition: .3s;
+    }
+}

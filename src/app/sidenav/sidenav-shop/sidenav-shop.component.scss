@@ -1,0 +1,13 @@
+.menu__list {
+
+    &__item:hover {
+        background-color: rgb(233, 233, 233);
+    }
+}
+
+::ng-deep {
+    .mat-list-base, .mat-list-item, .mat-list-item-content {
+        cursor: pointer;
+        justify-content: space-between;
+    }
+}

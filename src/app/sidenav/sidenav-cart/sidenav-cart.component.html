@@ -1,0 +1,18 @@
+<div class="orders">
+    <div *ngIf="cart.length === 0">
+        Your cart is currently empty
+    </div>
+
+    <div 
+        fxLayoutGap="10px"
+        *ngIf="cart.length > 0">
+        <app-sidecart-order
+            *ngFor="let game of cart"
+            [game]="game"></app-sidecart-order>
+
+        <div class="btn-container">
+            <button (click)="onCheckout()">Checkout</button>
+        </div>
+    </div>
+</div>
+

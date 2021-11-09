@@ -10,5 +10,7 @@
         [diameter]="80"></mat-spinner>
     <app-featured-card 
         *ngFor="let game of games" 
+        (click)="onGameSelect(game)"
+        [price]="price"
         [game]="game"></app-featured-card>
 </div>

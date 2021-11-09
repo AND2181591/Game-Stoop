@@ -1,4 +1,5 @@
 <h2>Playstation 4</h2>
 <hr>
 <app-featured-list 
-    [games]="games"></app-featured-list>
+    [games]="games"
+    (gameSelect)="onGameSelect($event)"></app-featured-list>

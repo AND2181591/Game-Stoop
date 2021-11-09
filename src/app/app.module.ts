@@ -13,7 +13,10 @@ import { AppComponent } from './app.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { HomeComponent } from './home/home.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
+import { SidenavShopComponent } from './sidenav/sidenav-shop/sidenav-shop.component';
+import { SidenavCartComponent } from './sidenav/sidenav-cart/sidenav-cart.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { SidecartOrderComponent } from './sidenav/sidenav-cart/sidecart-order/sidecart-order.component';
 
 
 @NgModule({
@@ -21,7 +24,10 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     AppComponent, 
     NavigationComponent, 
     HomeComponent, 
-    SidenavComponent, PageNotFoundComponent
+    SidenavComponent, 
+    PageNotFoundComponent,
+    SidenavShopComponent, 
+    SidenavCartComponent, SidecartOrderComponent
   ],
   imports: [
     BrowserModule,

@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+
+import { map } from 'rxjs/operators';
+
 import { GamesService } from 'src/app/games.service';
 import { Game } from 'src/app/shared/models/Game';
-import { GamesByPlatform } from 'src/app/shared/models/Platform';
+
 
 @Component({
   selector: 'app-xbox-one',
@@ -15,9 +18,13 @@ export class XboxOneComponent implements OnInit {
 
   ngOnInit(): void {
     this.gameService.fetchGames('xbox-one', '35')
-      .subscribe((results: GamesByPlatform) => {
+      .subscribe((results) => {
         this.games = results['xbox-one'].data;
       });
+  }
+
+  onGameSelect(game: Game) {
+    this.gameService.viewSelectedGame(game);
   }
 
 }

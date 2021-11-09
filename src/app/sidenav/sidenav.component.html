@@ -1,42 +1,19 @@
 <div class="menu" [ngClass.lt-sm]="'small'">
     <div class="menu__close">
-        <h5>Shop</h5>
+        <h5>{{ topHeader }}</h5>
         <mat-icon class="menu__close__icon" (click)="onClose()">close</mat-icon>
     </div>
 
-    <h2 class="menu__header" [ngClass.lt-sm]="'small__header'">Shop By Category</h2>
+    <h2 class="menu__header" [ngClass.lt-sm]="'small__header'">{{ bigHeader }}</h2>
     
-    <mat-list class="menu__list">
-        <mat-list-item
-            class="menu__list__item"
-            (click)="onClose()"
-            routerLink="/ps5">
-            PlayStation 5
-            <mat-icon>chevron_right</mat-icon>
-        </mat-list-item>
-        
-        <mat-list-item
-            class="menu__list__item"
-            (click)="onClose()"
-            routerLink="/ps4">
-            PlayStation 4
-            <mat-icon>chevron_right</mat-icon>
-        </mat-list-item>
-        
-        <mat-list-item 
-            class="menu__list__item"
-            (click)="onClose()"
-            routerLink="/xbox-series-x">
-            Xbox Series X
-            <mat-icon>chevron_right</mat-icon>
-        </mat-list-item>
-        
-        <mat-list-item 
-            class="menu__list__item"
-            (click)="onClose()"
-            routerLink="/xbox-one">
-            Xbox One
-            <mat-icon>chevron_right</mat-icon>
-        </mat-list-item>
-    </mat-list>
+
+    <app-sidenav-shop 
+        *ngIf="topHeader === 'Shop'" 
+        (close)="onClose()">
+    </app-sidenav-shop>
+
+    <app-sidenav-cart 
+        *ngIf="topHeader === 'Cart'"
+        (close)="onClose()">
+    </app-sidenav-cart>
 </div>

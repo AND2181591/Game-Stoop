@@ -29,7 +29,10 @@
     </div>
 
     <div [ngClass.lt-sm]="'small-icon'" class="toolbar__icons">
-        <mat-icon [ngClass.lt-sm]="'small-icon__cart'" class="toolbar__icons__cart">shopping_cart</mat-icon>
+        <mat-icon 
+            (click)="onOpenCart()" 
+            [ngClass.lt-sm]="'small-icon__cart'" 
+            class="toolbar__icons__cart">shopping_cart</mat-icon>
     </div>
 
 </mat-toolbar>

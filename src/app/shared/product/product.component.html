@@ -1,0 +1,31 @@
+<div 
+    class="container"
+    [ngClass.lt-sm]="'container-small'">
+    <div 
+        class="container--game"
+        [ngClass.lt-sm]="'container--game-small'">
+        <div class="container--game__image">
+            <img [src]="game.box_art" alt="">
+        </div>
+        <div fxHide.lt-sm class="container--game__description">
+            <h3>Product Description:</h3>
+            <p>{{ game.game_themes }}</p>
+        </div>
+    </div>
+
+    <div 
+        class="container--details"
+        [ngClass.lt-sm]="'container--details-small'">
+        <div class="container--details__title">
+            <h2 [ngClass.lt-sm]="'small-title'">{{ game.game_name }} - {{ game.platform }}</h2>
+            <h5>{{ game.developer }}</h5>
+            <h5>Playscore: {{ game.gamerscore }}</h5>
+            <h2 [ngClass.lt-sm]="'small-title'">$59.99</h2>
+        </div>
+        <div 
+            class="container--details__btn--cart" 
+            [ngClass.lt-sm]="'small-button'">
+            <button (click)="onAddToCart()">Add to Cart</button>
+        </div>
+    </div>
+</div>

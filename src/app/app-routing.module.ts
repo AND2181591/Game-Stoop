@@ -6,22 +6,22 @@ import { PageNotFoundComponent } from "./page-not-found/page-not-found.component
 
 const routes: Routes = [
     {
-        path: 'ps5', 
+        path: 'PS5', 
         loadChildren: () => 
             import('./ps5/ps5.module').then(m => m.Ps5Module)
     }, 
     {
-        path: 'ps4', 
+        path: 'PS4', 
         loadChildren: () => 
             import('./ps4/ps4.module').then(m => m.Ps4Module)
     }, 
     {
-        path: 'xbox-series-x', 
+        path: 'Series X', 
         loadChildren: () => 
             import('./xbox-sx/xbox-sx.module').then(m => m.XboxSXModule)
     }, 
     {
-        path: 'xbox-one', 
+        path: 'XB1', 
         loadChildren: () => 
             import('./xbox-one/xbox-one.module').then(m => m.XboxOneModule)
     }, 

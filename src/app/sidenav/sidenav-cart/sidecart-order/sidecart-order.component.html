@@ -1,0 +1,23 @@
+<div class="order">
+
+    <div class="order-inner">
+        <img 
+            class="order-inner__image"
+            [ngClass.lt-md]="'small__image'" [src]="game.box_art" alt="">
+
+        <div class="order-inner__details">
+            <div 
+                class="order-inner__details__title"
+                [ngClass.lt-md]="'small__title'">{{ game.game_name }}</div>
+            <!-- <div class="order-inner__details__count">
+                <button class="order-inner__details__count__btn">-</button>
+                <input class="order-inner__details__count__number" type="text">
+                <button class="order-inner__details__count__btn">+</button>
+            </div> -->
+        </div>
+    </div>
+
+    <div 
+        class="order__price"
+        [ngClass.lt-md]="'small__price'">{{ game.price | currency }}</div>
+</div> 

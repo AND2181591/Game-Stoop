@@ -7,6 +7,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 })
 export class NavigationComponent implements OnInit {
   @Output() open = new EventEmitter();
+  @Output() openCart = new EventEmitter();
 
   constructor() { }
 
@@ -15,5 +16,9 @@ export class NavigationComponent implements OnInit {
 
   onOpen() {
     this.open.emit();
+  }
+
+  onOpenCart() {
+    this.openCart.emit();
   }
 }
