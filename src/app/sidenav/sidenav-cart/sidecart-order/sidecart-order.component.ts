@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 import { Game } from 'src/app/shared/models/Game';
 
@@ -9,10 +9,15 @@ import { Game } from 'src/app/shared/models/Game';
 })
 export class SidecartOrderComponent implements OnInit {
   @Input() game: Game = {} as Game;
+  @Output() remove = new EventEmitter();
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onRemove() {
+    this.remove.emit();
   }
 
 }

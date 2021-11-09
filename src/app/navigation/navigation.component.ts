@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { CartService } from '../cart/cart.service';
 
 @Component({
   selector: 'app-navigation',
@@ -6,12 +7,17 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
   styleUrls: ['./navigation.component.scss']
 })
 export class NavigationComponent implements OnInit {
+  cartLength = '';
   @Output() open = new EventEmitter();
   @Output() openCart = new EventEmitter();
 
-  constructor() { }
+  constructor(private cartService: CartService) { }
 
   ngOnInit(): void {
+    this.cartService.getCart$.subscribe((results) => {
+      this.cartLength = results.length.toString();
+    });
+    // this.cartLength = this.cartService.getCart().length.toString();
   }
 
   onOpen() {

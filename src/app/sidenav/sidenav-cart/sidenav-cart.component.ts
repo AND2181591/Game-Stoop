@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CartService } from 'src/app/cart/cart.service';
+import { GamesService } from 'src/app/games.service';
 
 import { Game } from 'src/app/shared/models/Game';
 
@@ -12,7 +13,10 @@ export class SidenavCartComponent implements OnInit {
   @Input() cart: Game[] = [];
   total = 0;
 
-  constructor(private cartService: CartService) { }
+  constructor(
+    private gameService: GamesService, 
+    private cartService: CartService
+  ) { }
 
   ngOnInit(): void {
     this.cart = this.cartService.getCart();
@@ -25,6 +29,14 @@ export class SidenavCartComponent implements OnInit {
 
   onCheckout() {
     console.log('Awesome');
+  }
+
+  onRemove(index: number) {
+    this.cartService.removeFromCart(index);
+  }
+
+  getTotal() {
+    return this.cart.length * this.gameService.getPrice();
   }
 
 }

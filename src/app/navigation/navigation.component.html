@@ -32,7 +32,13 @@
         <mat-icon 
             (click)="onOpenCart()" 
             [ngClass.lt-sm]="'small-icon__cart'" 
-            class="toolbar__icons__cart">shopping_cart</mat-icon>
+            class="toolbar__icons__cart">
+            <span 
+                [matBadge]="cartLength" 
+                matBadgeOverlap="true">
+                shopping_cart
+            </span>
+        </mat-icon>
     </div>
 
 </mat-toolbar>

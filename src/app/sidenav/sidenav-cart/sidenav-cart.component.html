@@ -7,9 +7,11 @@
         fxLayoutGap="10px"
         *ngIf="cart.length > 0">
         <app-sidecart-order
-            *ngFor="let game of cart"
-            [game]="game"></app-sidecart-order>
+            *ngFor="let game of cart; let i = index"
+            [game]="game"
+            (remove)="onRemove(i)"></app-sidecart-order>
 
+        <h3>Total: {{ getTotal() }}</h3>
         <div class="btn-container">
             <button (click)="onCheckout()">Checkout</button>
         </div>

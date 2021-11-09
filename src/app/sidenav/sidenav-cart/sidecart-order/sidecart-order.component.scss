@@ -19,9 +19,20 @@
         }
 
         &__details {
+            display: flex;
+            flex-direction: column;
 
             &__title {
                 padding-bottom: 10px;
+            }
+
+            & button {
+                border: none;
+                color: #ff1900;
+                padding: 0;
+                background-color: transparent;
+                cursor: pointer;
+                margin-right: auto;
             }
 
 

@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 
 import { Subject } from 'rxjs';
-import { GamesService } from '../games.service';
 
+import { GamesService } from '../games.service';
 import { Game } from '../shared/models/Game';
 
 @Injectable({
@@ -24,11 +24,8 @@ export class CartService {
     this.getCart$.next([...this.cart]);
   }
 
-  removeFromCart(gameId: number): void {
-    this.cart = this.cart.filter((game) => {
-      return game.game_id !== gameId;
-    });
-
+  removeFromCart(index: number): void {
+    this.cart.splice(index, 1);
     this.getCart$.next([...this.cart]);
   }
 

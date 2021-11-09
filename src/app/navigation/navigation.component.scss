@@ -78,6 +78,7 @@
         display: flex;
         justify-content: flex-end;
         width: 100px;
+        padding-right: 5px;
 
         &__cart {
             font-size: 2rem;
@@ -111,9 +112,14 @@
         top: 20px;
         right: 26px;
         width: 80px;
+        padding: 0;
 
         &__cart {
             font-size: 1.8rem;
         }
     }
+}
+
+.mat-badge-content {
+    background-color: #ff1900;
 }

@@ -5,6 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatBadgeModule } from '@angular/material/badge';
 
 
 @NgModule({
@@ -13,14 +14,16 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
         MatIconModule, 
         MatSidenavModule, 
         MatListModule, 
-        MatProgressSpinnerModule
+        MatProgressSpinnerModule, 
+        MatBadgeModule
     ], 
     exports: [
         MatToolbarModule, 
         MatIconModule, 
         MatSidenavModule, 
         MatListModule, 
-        MatProgressSpinnerModule
+        MatProgressSpinnerModule, 
+        MatBadgeModule
     ]
 })
 export class MaterialModule {}

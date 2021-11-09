@@ -9,6 +9,7 @@
             <div 
                 class="order-inner__details__title"
                 [ngClass.lt-md]="'small__title'">{{ game.game_name }}</div>
+            <button (click)="onRemove()">Remove</button>
             <!-- <div class="order-inner__details__count">
                 <button class="order-inner__details__count__btn">-</button>
                 <input class="order-inner__details__count__number" type="text">
