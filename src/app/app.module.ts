@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { MaterialModule } from './material.module';
+
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { MaterialModule } from './material.module';
 
 import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './shared/shared.module';
@@ -32,6 +34,7 @@ import { SidecartOrderComponent } from './sidenav/sidenav-cart/sidecart-order/si
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    FormsModule, 
     HttpClientModule, 
     FlexLayoutModule, 
     MaterialModule, 

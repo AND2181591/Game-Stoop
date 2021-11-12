@@ -19,13 +19,24 @@
     <div 
         class="toolbar__search"
         [ngClass.lt-sm]="'small-search'">
-        <button class="toolbar__search__icon">
-            <mat-icon>search</mat-icon>
-        </button>
-        <input 
-            class="toolbar__search__input"
-            type="text"
-            placeholder="Search games, consoles and more">
+        
+        <form 
+            class="toolbar__search__form" 
+            #f="ngForm"
+            (ngSubmit)="onSubmit(f)">
+            <button 
+                class="toolbar__search__icon"
+                type="button">
+                <mat-icon>search</mat-icon>
+            </button>
+            <input 
+                class="toolbar__search__input"
+                type="text"
+                placeholder="Search games..."
+                name="searchGame"
+                ngModel>
+        </form>
+        
     </div>
 
     <div [ngClass.lt-sm]="'small-icon'" class="toolbar__icons">

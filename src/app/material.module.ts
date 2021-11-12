@@ -6,6 +6,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatBadgeModule } from '@angular/material/badge';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { MatBadgeModule } from '@angular/material/badge';
         MatSidenavModule, 
         MatListModule, 
         MatProgressSpinnerModule, 
-        MatBadgeModule
+        MatBadgeModule, 
+        MatAutocompleteModule
     ], 
     exports: [
         MatToolbarModule, 
@@ -23,7 +25,8 @@ import { MatBadgeModule } from '@angular/material/badge';
         MatSidenavModule, 
         MatListModule, 
         MatProgressSpinnerModule, 
-        MatBadgeModule
+        MatBadgeModule, 
+        MatAutocompleteModule
     ]
 })
 export class MaterialModule {}
