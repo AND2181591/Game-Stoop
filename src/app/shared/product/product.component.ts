@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 import { CartService } from 'src/app/cart/cart.service';
 import { GamesService } from 'src/app/games.service';
 import { Game } from '../models/Game';
@@ -21,8 +21,16 @@ export class ProductComponent implements OnInit {
 
   ngOnInit(): void {
     const gameId = this.route.snapshot.params['gameId'];
-    
-    this.gameService.fetchSelectedGame(gameId)
+    this.route.params.subscribe((param: Params) => {
+      const id = param['gameId'];
+      this.viewGame(id);
+    });
+
+    this.viewGame(gameId);
+  }
+
+  viewGame(id: number) {
+    this.gameService.fetchSelectedGame(id)
       .subscribe((results) => {
         for (let k in results) {
           const result = results[k];

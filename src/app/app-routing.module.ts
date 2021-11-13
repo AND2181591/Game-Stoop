@@ -8,22 +8,34 @@ const routes: Routes = [
     {
         path: 'PS5', 
         loadChildren: () => 
-            import('./ps5/ps5.module').then(m => m.Ps5Module)
+            import('./ps5/ps5.module').then(m => m.Ps5Module), 
+        data: {
+            name: 'PS5'
+        }
     }, 
     {
         path: 'PS4', 
         loadChildren: () => 
-            import('./ps4/ps4.module').then(m => m.Ps4Module)
+            import('./ps4/ps4.module').then(m => m.Ps4Module), 
+        data: {
+            name: 'PS4'
+        }
     }, 
     {
         path: 'Series X', 
         loadChildren: () => 
-            import('./xbox-sx/xbox-sx.module').then(m => m.XboxSXModule)
+            import('./xbox-sx/xbox-sx.module').then(m => m.XboxSXModule), 
+        data: {
+            name: 'Series X'
+        }
     }, 
     {
         path: 'XB1', 
         loadChildren: () => 
-            import('./xbox-one/xbox-one.module').then(m => m.XboxOneModule)
+            import('./xbox-one/xbox-one.module').then(m => m.XboxOneModule), 
+        data: {
+            name: 'XB1'
+        }
     }, 
     {
         path: 'cart', 
