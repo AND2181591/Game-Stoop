@@ -1,0 +1,24 @@
+<form 
+    class="search"
+    [formGroup]="searchForm">
+    <mat-icon class="search__icon">search</mat-icon>
+    <input 
+        class="search__input"
+        type="text"
+        placeholder="Search games..."
+        formControlName="searchGame"
+        [matAutocomplete]="auto">
+    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+        <mat-option 
+            *ngFor="let game of gameResults"
+            [value]="game.game_name"
+            (click)="onSubmit(game)">
+            <div class="search__options">
+                <img [src]="game.box_art" alt="">
+                <div class="search__options__name">
+                    {{ game.game_name }} - {{ game.platform }}
+                </div>
+            </div> 
+        </mat-option>
+    </mat-autocomplete>
+</form>

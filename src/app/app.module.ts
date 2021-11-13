@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -13,6 +13,7 @@ import { GameHttpInterceptor } from './interceptors/game-http.interceptor';
 
 import { AppComponent } from './app.component';
 import { NavigationComponent } from './navigation/navigation.component';
+import { SearchBarComponent } from './navigation/search-bar/search-bar.component';
 import { HomeComponent } from './home/home.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { SidenavShopComponent } from './sidenav/sidenav-shop/sidenav-shop.component';
@@ -25,16 +26,18 @@ import { SidecartOrderComponent } from './sidenav/sidenav-cart/sidecart-order/si
   declarations: [
     AppComponent, 
     NavigationComponent, 
+    SearchBarComponent, 
     HomeComponent, 
     SidenavComponent, 
     PageNotFoundComponent,
     SidenavShopComponent, 
-    SidenavCartComponent, SidecartOrderComponent
+    SidenavCartComponent, 
+    SidecartOrderComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    FormsModule, 
+    ReactiveFormsModule, 
     HttpClientModule, 
     FlexLayoutModule, 
     MaterialModule, 

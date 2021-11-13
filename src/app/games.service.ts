@@ -23,6 +23,7 @@ export class GamesService {
     private router: Router
   ) { }
 
+
   // Used in the Home and Platform pages to fetch the games by console.
   fetchGames(platform: string, count: string): Observable<GamesByPlatform> {
     let params = new HttpParams().set('platform', platform)
@@ -33,6 +34,16 @@ export class GamesService {
     });
   }
 
+  // Used by the carousel in the product component to display recommendations
+  fetchNewGames(platform: string): Observable<GamesByPlatform> {
+    let params = new HttpParams().set('platform', platform);
+
+    return this.http.get<GamesByPlatform>(`${env.BASE_URL}/new`, {
+      params: params
+    });
+  }
+
+
   // Used for the Product component whenever a game is selected
   fetchSelectedGame(gameId: Number): Observable<VideoGameDetails> {
     let params = new HttpParams().set('game_id', gameId.toString());
@@ -42,9 +53,22 @@ export class GamesService {
     });
   }
 
+
+  // Used by the search bar to fetch a game by what the user types
+  fetchGameByName(name: string): Observable<Game[]> {
+    let params = new HttpParams().set('game', name);
+
+    return this.http.get<Game[]>(`${env.BASE_URL}/search`, {
+      params: params
+    });
+  }
+  
+
+  // Returns the price hard-coded into this service
   getPrice(): number {
     return this.price;
   }
+
 
   // Used when selecting any game and assigned its platform and id to the route params.
   viewSelectedGame(game: Game) {

@@ -1,0 +1,8 @@
+<carousel>
+    <div 
+        class="carousel-cell"
+        *ngFor="let game of games" 
+        (click)="onGameSelect(game)">
+        <img [src]="game.box_art" [alt]="game.game_name">
+    </div>
+</carousel>

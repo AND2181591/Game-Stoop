@@ -11,9 +11,11 @@
             [game]="game"
             (remove)="onRemove(i)"></app-sidecart-order>
 
-        <h3>Total: {{ getTotal() }}</h3>
-        <div class="btn-container">
-            <button (click)="onCheckout()">Checkout</button>
+        <div class="orders__total">
+            <h3>Total: {{ getTotal() }}</h3>
+            <div class="btn-container">
+                <button (click)="onCheckout()">Checkout</button>
+            </div>
         </div>
     </div>
 </div>

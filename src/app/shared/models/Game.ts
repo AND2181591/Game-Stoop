@@ -15,3 +15,8 @@ export interface Game {
     price?: number;
     quantity?: number;
 }
+
+/*
+Platform strings...
+'PS5', 'PS4', 'XB1', 'Series X'
+*/
