@@ -24,10 +24,12 @@ import { CarouselComponent } from './carousel/carousel.component';
     IvyCarouselModule
   ], 
   exports: [
+    FlexLayoutModule, 
     FeaturedCardComponent, 
     FeaturedListComponent, 
     ProductComponent, 
-    CarouselComponent
+    CarouselComponent, 
+    MaterialModule
   ]
 })
 export class SharedModule { }

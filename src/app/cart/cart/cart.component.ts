@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { GamesService } from 'src/app/games.service';
+import { Game } from 'src/app/shared/models/Game';
+import { CartService } from '../cart.service';
 
 @Component({
   selector: 'app-cart',
@@ -6,10 +9,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent implements OnInit {
+  price: number = 0;
+  games: Game[] = []
 
-  constructor() { }
+  constructor(
+    private cartService: CartService, 
+    private gameService: GamesService
+  ) { }
 
   ngOnInit(): void {
+    this.games = this.cartService.getCart();
+    this.price = this.gameService.getPrice();
+  }
+
+  onRemove() {
+    console.log('Kewl');
   }
 
 }

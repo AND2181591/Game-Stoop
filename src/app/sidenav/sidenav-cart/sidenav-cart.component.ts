@@ -1,4 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { CartService } from 'src/app/cart/cart.service';
 import { GamesService } from 'src/app/games.service';
 
@@ -10,12 +12,14 @@ import { Game } from 'src/app/shared/models/Game';
   styleUrls: ['./sidenav-cart.component.scss']
 })
 export class SidenavCartComponent implements OnInit {
+  @Output() close = new EventEmitter();
   @Input() cart: Game[] = [];
   total = 0;
 
   constructor(
     private gameService: GamesService, 
-    private cartService: CartService
+    private cartService: CartService, 
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -28,7 +32,8 @@ export class SidenavCartComponent implements OnInit {
   }
 
   onCheckout() {
-    console.log('Awesome');
+    this.router.navigateByUrl('/cart');
+    this.close.emit();
   }
 
   onRemove(index: number) {

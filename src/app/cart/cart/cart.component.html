@@ -1,1 +1,55 @@
-<p>cart works!</p>
+<div 
+    class="cart"
+    [ngClass.lt-sm]="'cart-small'">
+    <div class="cart__header">
+        <div 
+            class="cart__header__text"
+            [ngClass.lt-sm]="'cart__header__text-small'">
+            <mat-icon>home</mat-icon>
+            <h4>Ship to Home: {{ games.length }} 
+                <span *ngIf="games.length === 1">Item</span>
+                <span *ngIf="games.length > 1">Items</span>
+            </h4>
+        </div>
+    </div>
+
+    <h3 *ngIf="games.length === 0">Your cart is currently empty</h3>
+
+    <div 
+        class="cart__item"
+        [ngClass.lt-sm]="'cart__item-small'"
+        *ngFor="let game of games">
+        <div 
+            class="cart__item__game" 
+            [ngClass.lt-sm]="'cart__item__game-small'">
+            <img [src]="game.box_art" alt="">
+            <div 
+                class="cart__item__description" 
+                [ngClass.lt-sm]="'cart__item__description-small'">
+                <h4>{{ game.game_name }} - {{ game.platform }}</h4>
+                <h5>Platform: {{ game.platform }}</h5>
+                <h5>Developer: {{ game.developer }}</h5>
+            </div>
+        </div>
+        
+        <div 
+            class="cart__item__price" 
+            [ngClass.lt-sm]="'cart__item__price-small'">
+            <h4
+                class="cart__item__price__text"
+                [ngClass.lt-sm]="'cart__item__price__text-small'">
+                {{ price | currency }}</h4>
+            <button (click)="onRemove()">Remove</button>
+        </div>
+        
+    </div>
+
+    <div 
+        *ngIf="games.length > 0"
+        class="cart__button">
+        <h3>Total: {{ price * games.length }}</h3>
+        <button>Proceed to Checkout</button>
+    </div>
+    
+    
+</div>
