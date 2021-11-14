@@ -18,12 +18,15 @@ export class CartComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.cartService.getCart$.subscribe((results) => {
+      this.games = results;
+    });
     this.games = this.cartService.getCart();
     this.price = this.gameService.getPrice();
   }
 
-  onRemove() {
-    console.log('Kewl');
+  onRemove(index: number) {
+    this.cartService.removeFromCart(index);
   }
 
 }

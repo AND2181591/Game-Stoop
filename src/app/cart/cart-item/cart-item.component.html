@@ -1,0 +1,27 @@
+<div 
+    class="cart-item"
+    [ngClass.lt-sm]="'cart-item-small'">
+    <div 
+        class="cart-item__game" 
+        [ngClass.lt-sm]="'cart-item__game-small'">
+        <img [src]="game.box_art" alt="">
+        <div 
+            class="cart-item__description" 
+            [ngClass.lt-sm]="'cart-item__description-small'">
+            <h4>{{ game.game_name }} - {{ game.platform }}</h4>
+            <h5>Platform: {{ game.platform }}</h5>
+            <h5>Developer: {{ game.developer }}</h5>
+        </div>
+    </div>
+    
+    <div 
+        class="cart-item__price" 
+        [ngClass.lt-sm]="'cart-item__price-small'">
+        <h4
+            class="cart-item__price__text"
+            [ngClass.lt-sm]="'cart-item__price__text-small'">
+            {{ price | currency }}</h4>
+        <button (click)="onRemove()">Remove</button>
+    </div>
+    
+</div>
