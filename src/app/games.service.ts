@@ -2,7 +2,8 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 import { environment as env } from 'src/environments/environment';
 
@@ -31,7 +32,12 @@ export class GamesService {
 
     return this.http.get<GamesByPlatform>(`${env.BASE_URL}/platform`, {
       params: params
-    });
+    })
+    .pipe(
+      catchError((err) => {
+        return of(err);
+      })
+    )
   }
 
   // Used by the carousel in the product component to display recommendations
@@ -56,6 +62,11 @@ export class GamesService {
 
   // Used by the search bar to fetch a game by what the user types
   fetchGameByName(name: string): Observable<Game[]> {
+    if (name === '') { 
+      // Handles an empty string if the user clears the search bar
+      return of();
+    }
+
     let params = new HttpParams().set('game', name);
 
     return this.http.get<Game[]>(`${env.BASE_URL}/search`, {
