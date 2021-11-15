@@ -13,7 +13,7 @@
         </div>
     </div>
 
-    <h3 *ngIf="games.length === 0">Your cart is currently empty</h3>
+    <h4 *ngIf="games.length === 0">Your cart is currently empty</h4>
 
     <app-cart-item 
         *ngFor="let game of games; let i = index"
@@ -26,6 +26,6 @@
         *ngIf="games.length > 0"
         class="cart__button">
         <h3>Total: {{ price * games.length }}</h3>
-        <button>Proceed to Checkout</button>
+        <button (click)="onCheckout()">Proceed to Checkout</button>
     </div>
 </div>

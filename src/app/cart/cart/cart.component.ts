@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { GamesService } from 'src/app/games.service';
 import { Game } from 'src/app/shared/models/Game';
 import { CartService } from '../cart.service';
@@ -14,7 +16,8 @@ export class CartComponent implements OnInit {
 
   constructor(
     private cartService: CartService, 
-    private gameService: GamesService
+    private gameService: GamesService, 
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -27,6 +30,10 @@ export class CartComponent implements OnInit {
 
   onRemove(index: number) {
     this.cartService.removeFromCart(index);
+  }
+
+  onCheckout() {
+    this.router.navigateByUrl('/checkout');
   }
 
 }
