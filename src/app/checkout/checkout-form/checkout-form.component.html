@@ -1,0 +1,72 @@
+<form 
+    class="form-info"
+    [formGroup]="checkoutForm">
+
+    <div 
+        class="form-info__name" 
+        [ngClass.lt-sm]="'small-input-group'">
+        <div 
+            class="form-info__name__first"
+            [ngClass.lt-sm]="'small-input'">
+            <h5>First Name</h5>
+            <input formControlName="firstName" type="text">
+        </div>
+        
+        <div 
+            class="form-info__name__last"
+            [ngClass.lt-sm]="'small-input'">
+            <h5>Last Name</h5>
+            <input formControlName="lastName" type="text">
+        </div>
+    </div>
+
+    <div class="form-info__street">
+        <h5>Street Address</h5>
+        <input formControlName="streetAddr" type="text">
+    </div>
+
+    <div 
+        class="form-info__zip"
+        [ngClass.lt-sm]="'small-input-group'">
+        <div 
+            class="form-info__zip__zip"
+            [ngClass.lt-sm]="'small-input'">
+            <h5>Zip Code</h5>
+            <input formControlName="zip" type="text">
+        </div>
+        <div 
+            class="form-info__zip__city"
+            [ngClass.lt-sm]="'small-input'">
+            <h5>City</h5>
+            <input formControlName="city" type="text">
+        </div>
+        <div 
+            class="form-info__zip__state"
+            [ngClass.lt-sm]="'small-input'">
+            <h5>State</h5>
+            <select formControlName="state">
+                <option *ngFor="let state of states" [ngValue]="state">
+                    {{ state }}
+                </option>
+            </select>
+        </div>
+    </div>
+
+    <div 
+        class="form-info__email" 
+        [ngClass.lt-sm]="'small-input-group'">
+        <div 
+            class="form-info__email__email"
+            [ngClass.lt-sm]="'small-input'">
+            <h5>Email</h5>
+            <input formControlName="email" type="text">
+        </div>
+        
+        <div 
+            class="form-info__email__phone"
+            [ngClass.lt-sm]="'small-input'">
+            <h5>Phone Number</h5>
+            <input formControlName="phone" type="text">
+        </div>
+    </div>
+</form>
