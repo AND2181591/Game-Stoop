@@ -54,11 +54,20 @@
             [control]="checkoutForm.get('email')"></app-input>
 
         <app-input 
-            label="Phone Number" 
+            label="Phone Number (optional)" 
             [control]="checkoutForm.get('phone')"></app-input>
     </div>
 
     <div class="form-info__button">
-        <button [disabled]="!checkoutForm.valid" type="submit">Complete Order</button>
+        <button 
+            [disabled]="!checkoutForm.valid || cart.length === 0" 
+            type="submit">
+            Complete Order
+        </button>
+        <p 
+            *ngIf="cart.length === 0"
+            class="form-info__button__error">
+            *You will need items in your cart to complete order*
+        </p>
     </div>
 </form>

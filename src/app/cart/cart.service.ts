@@ -14,19 +14,14 @@ export class CartService {
 
   constructor(private gameService: GamesService) { }
 
-  getCart(): Game[] {
-    return [...this.cart];
-  }
-
   addToCart(game: Game): void {
     game.price = this.gameService.getPrice();
     this.cart.push(game);
     this.getCart$.next([...this.cart]);
   }
 
-  removeFromCart(index: number): void {
-    this.cart.splice(index, 1);
-    this.getCart$.next([...this.cart]);
+  getCart(): Game[] {
+    return [...this.cart];
   }
 
   getCartTotal(): number {
@@ -36,5 +31,15 @@ export class CartService {
     });
 
     return total;
+  }
+
+  removeFromCart(index: number): void {
+    this.cart.splice(index, 1);
+    this.getCart$.next([...this.cart]);
+  }
+
+  clearCart() {
+    this.cart = [];
+    this.getCart$.next([...this.cart]);
   }
 }

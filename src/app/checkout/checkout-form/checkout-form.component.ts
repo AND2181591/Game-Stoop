@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { Router } from '@angular/router';
+import { CartService } from 'src/app/cart/cart.service';
 import { DialogComponent } from 'src/app/shared/dialog/dialog.component';
+import { Game } from 'src/app/shared/models/Game';
 
 import { states } from '../states';
 
@@ -11,6 +14,8 @@ import { states } from '../states';
   styleUrls: ['./checkout-form.component.scss']
 })
 export class CheckoutFormComponent implements OnInit {
+  cart: Game[] = [];
+
   states: string[] = [];
   checkoutForm = new FormGroup({
     firstName: new FormControl('', Validators.required), 
@@ -24,10 +29,20 @@ export class CheckoutFormComponent implements OnInit {
   });
 
 
-  constructor(private dialog: MatDialog) { }
+  constructor(
+    private dialog: MatDialog, 
+    private cartService: CartService, 
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     this.states = states;
+
+    this.cartService.getCart$.subscribe((results) => {
+      this.cart = results;
+    });
+    
+    this.cart = this.cartService.getCart();
   }
 
   onCompleteOrder() {
@@ -42,6 +57,8 @@ export class CheckoutFormComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(() => {
       this.checkoutForm.reset();
+      this.cartService.clearCart();
+      this.router.navigateByUrl('/');
     });
   }
 

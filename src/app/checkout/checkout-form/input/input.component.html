@@ -2,4 +2,14 @@
     class="input">
     <h5>{{ label }}</h5>
     <input [formControl]="control" type="text">
+    <p
+        class="input__error" 
+        *ngIf="control.errors && control.touched">
+        *Required*
+    </p>
+    <p
+        class="input__error" 
+        *ngIf="control.errors?.email && control.touched">
+        *Please enter a valid email*
+    </p>
 </div>
