@@ -8,6 +8,7 @@ import { FeaturedCardComponent } from './featured-card/featured-card.component';
 import { FeaturedListComponent } from './featured-list/featured-list.component';
 import { ProductComponent } from './product/product.component';
 import { CarouselComponent } from './carousel/carousel.component';
+import { DialogComponent } from './dialog/dialog.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { CarouselComponent } from './carousel/carousel.component';
     FeaturedCardComponent,
     FeaturedListComponent,
     ProductComponent,
-    CarouselComponent
+    CarouselComponent,
+    DialogComponent
   ],
   imports: [
     CommonModule, 

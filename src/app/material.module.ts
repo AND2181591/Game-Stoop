@@ -7,6 +7,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
         MatListModule, 
         MatProgressSpinnerModule, 
         MatBadgeModule, 
-        MatAutocompleteModule
+        MatAutocompleteModule, 
+        MatDialogModule
     ], 
     exports: [
         MatToolbarModule, 
@@ -26,7 +28,8 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
         MatListModule, 
         MatProgressSpinnerModule, 
         MatBadgeModule, 
-        MatAutocompleteModule
+        MatAutocompleteModule, 
+        MatDialogModule
     ]
 })
 export class MaterialModule {}

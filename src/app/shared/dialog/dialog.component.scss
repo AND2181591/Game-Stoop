@@ -1,0 +1,22 @@
+:host {
+    text-align: center;
+}
+
+mat-dialog-actions {
+    justify-content: center;
+}
+
+button {
+    padding: 10px;
+    border: none;
+    width: 80px;
+    font-weight: 600;
+    background-color: #ff1900;
+    color: #fff;
+    cursor: pointer;
+
+    &:hover {
+        background-color: #c01300;
+        transition: .3s;
+    }
+}

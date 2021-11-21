@@ -1,47 +1,41 @@
 <form 
     class="form-info"
-    [formGroup]="checkoutForm">
+    [formGroup]="checkoutForm" 
+    (ngSubmit)="onCompleteOrder()">
 
     <div 
         class="form-info__name" 
         [ngClass.lt-sm]="'small-input-group'">
-        <div 
-            class="form-info__name__first"
-            [ngClass.lt-sm]="'small-input'">
-            <h5>First Name</h5>
-            <input formControlName="firstName" type="text">
-        </div>
+        <app-input
+            label="First Name" 
+            [control]="checkoutForm.get('firstName')"></app-input>
         
-        <div 
-            class="form-info__name__last"
-            [ngClass.lt-sm]="'small-input'">
-            <h5>Last Name</h5>
-            <input formControlName="lastName" type="text">
-        </div>
+        <app-input
+            label="Last Name" 
+            [control]="checkoutForm.get('lastName')"></app-input>
     </div>
 
     <div class="form-info__street">
-        <h5>Street Address</h5>
-        <input formControlName="streetAddr" type="text">
+        <app-input
+            label="Street Address"
+            [control]="checkoutForm.get('streetAddr')"></app-input>
     </div>
 
     <div 
         class="form-info__zip"
         [ngClass.lt-sm]="'small-input-group'">
+        <app-input
+            class="form-info__zip__input-zip"
+            label="Zip Code" 
+            [control]="checkoutForm.get('zip')"></app-input>
+
+        <app-input 
+            class="form-info__zip__input-city"
+            label="City" 
+            [control]="checkoutForm.get('city')"></app-input>
+        
         <div 
-            class="form-info__zip__zip"
-            [ngClass.lt-sm]="'small-input'">
-            <h5>Zip Code</h5>
-            <input formControlName="zip" type="text">
-        </div>
-        <div 
-            class="form-info__zip__city"
-            [ngClass.lt-sm]="'small-input'">
-            <h5>City</h5>
-            <input formControlName="city" type="text">
-        </div>
-        <div 
-            class="form-info__zip__state"
+            class="form-info__zip__input-state"
             [ngClass.lt-sm]="'small-input'">
             <h5>State</h5>
             <select formControlName="state">
@@ -55,18 +49,16 @@
     <div 
         class="form-info__email" 
         [ngClass.lt-sm]="'small-input-group'">
-        <div 
-            class="form-info__email__email"
-            [ngClass.lt-sm]="'small-input'">
-            <h5>Email</h5>
-            <input formControlName="email" type="text">
-        </div>
-        
-        <div 
-            class="form-info__email__phone"
-            [ngClass.lt-sm]="'small-input'">
-            <h5>Phone Number</h5>
-            <input formControlName="phone" type="text">
-        </div>
+        <app-input 
+            label="Email" 
+            [control]="checkoutForm.get('email')"></app-input>
+
+        <app-input 
+            label="Phone Number" 
+            [control]="checkoutForm.get('phone')"></app-input>
+    </div>
+
+    <div class="form-info__button">
+        <button [disabled]="!checkoutForm.valid" type="submit">Complete Order</button>
     </div>
 </form>

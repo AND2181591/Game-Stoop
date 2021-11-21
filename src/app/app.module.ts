@@ -20,6 +20,7 @@ import { SidenavShopComponent } from './sidenav/sidenav-shop/sidenav-shop.compon
 import { SidenavCartComponent } from './sidenav/sidenav-cart/sidenav-cart.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { SidecartOrderComponent } from './sidenav/sidenav-cart/sidecart-order/sidecart-order.component';
+import { DialogComponent } from './shared/dialog/dialog.component';
 
 
 @NgModule({
@@ -51,6 +52,7 @@ import { SidecartOrderComponent } from './sidenav/sidenav-cart/sidecart-order/si
       multi: true
     }
   ], 
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent], 
+  entryComponents: [DialogComponent]
 })
 export class AppModule { }

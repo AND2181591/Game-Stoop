@@ -1,0 +1,23 @@
+.input {
+    position: relative;
+    width: 100%;
+    margin: 10px 0;
+
+    & h5 {
+        position: absolute;
+        top: 5px;
+        left: 12px;
+        margin: 0;
+    }
+
+    & input {
+        border: solid #000 1px;
+        padding: 22px 12px 10px;
+        width: 100%;
+        box-sizing: border-box;
+
+        &:focus {
+            outline: none;
+        }
+    }
+}
