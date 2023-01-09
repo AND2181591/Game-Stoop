@@ -1,27 +1,33 @@
-<h2>Playstation 5</h2>
-<hr>
-<app-featured-list 
-    [games]="ps5"
-    (gameSelect)="onGameSelect($event)"></app-featured-list>
+<mat-spinner 
+    *ngIf="isLoading"
+    [strokeWidth]="2" 
+    [diameter]="80"></mat-spinner>
 
-
-<h2>Playstation 4</h2>
-<hr>
-<app-featured-list 
-    [games]="ps4"
-    (gameSelect)="onGameSelect($event)"></app-featured-list>
-
-
-<h2>Xbox Series X</h2>
-<hr>
-<app-featured-list 
-    [games]="xboxSX"
-    (gameSelect)="onGameSelect($event)"></app-featured-list>
-
-
-<h2>Xbox One</h2>
-<hr>
-<app-featured-list 
-    [games]="xboxOne"
-    (gameSelect)="onGameSelect($event)"></app-featured-list>
+<div *ngIf="!isLoading" class="main-container">
+    <h2>Playstation 5</h2>
+    <hr>
+    <app-featured-list 
+        [games]="ps5"
+        (gameSelect)="onGameSelect($event)"></app-featured-list>
     
+    
+    <h2>Playstation 4</h2>
+    <hr>
+    <app-featured-list 
+        [games]="ps4"
+        (gameSelect)="onGameSelect($event)"></app-featured-list>
+    
+    
+    <h2>Xbox Series X</h2>
+    <hr>
+    <app-featured-list 
+        [games]="xboxSX"
+        (gameSelect)="onGameSelect($event)"></app-featured-list>
+    
+    
+    <h2>Xbox One</h2>
+    <hr>
+    <app-featured-list 
+        [games]="xboxOne"
+        (gameSelect)="onGameSelect($event)"></app-featured-list>
+</div>

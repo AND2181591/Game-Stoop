@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { Subject } from 'rxjs';
 
-import { GamesService } from '../games.service';
+import { GamesService } from '../services/games/games.service';
 import { Game } from '../shared/models/Game';
 
 @Injectable({

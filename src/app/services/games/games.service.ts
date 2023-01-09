@@ -7,9 +7,9 @@ import { catchError } from 'rxjs/operators';
 
 import { environment as env } from 'src/environments/environment';
 
-import { Game } from './shared/models/Game';
-import { VideoGameDetails } from './shared/models/GameDetails';
-import { GamesByPlatform } from './shared/models/Platform';
+import { Game } from '../../shared/models/Game';
+import { VideoGameDetails } from '../../shared/models/GameDetails';
+import { GamesByPlatform } from '../../shared/models/Platform';
 
 
 @Injectable({

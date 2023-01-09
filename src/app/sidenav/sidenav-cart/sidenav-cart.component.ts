@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { CartService } from 'src/app/cart/cart.service';
-import { GamesService } from 'src/app/games.service';
+import { GamesService } from 'src/app/services/games/games.service';
 
 import { Game } from 'src/app/shared/models/Game';
 

@@ -1,5 +1,5 @@
 export const environment = {
   production: true, 
-  BASE_URL: 'https://whatoplay.p.rapidapi.com/', 
-  API_KEY: 'f1d3889813msh85cf14bda58d596p1c7133jsn950166e0f269'
+  BASE_URL: 'https://api.rawg.io/api/', 
+  API_KEY: '23c0e43a6f82445a8ebcfc4c26ad0413'
 };

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { GamesService } from 'src/app/games.service';
+import { GamesService } from 'src/app/services/games/games.service';
 import { Game } from 'src/app/shared/models/Game';
 import { CartService } from '../cart.service';
 

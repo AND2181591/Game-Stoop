@@ -21,6 +21,7 @@ import { SidenavCartComponent } from './sidenav/sidenav-cart/sidenav-cart.compon
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { SidecartOrderComponent } from './sidenav/sidenav-cart/sidecart-order/sidecart-order.component';
 import { DialogComponent } from './shared/dialog/dialog.component';
+import { LoadingInterceptor } from './interceptors/loading.interceptor';
 
 
 @NgModule({
@@ -46,6 +47,11 @@ import { DialogComponent } from './shared/dialog/dialog.component';
     SharedModule
   ],
   providers: [
+    {
+      provide: HTTP_INTERCEPTORS, 
+      useClass: LoadingInterceptor, 
+      multi: true
+    }, 
     {
       provide: HTTP_INTERCEPTORS, 
       useClass: GameHttpInterceptor, 

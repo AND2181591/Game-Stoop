@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { CartService } from 'src/app/cart/cart.service';
-import { GamesService } from 'src/app/games.service';
+import { GamesService } from 'src/app/services/games/games.service';
 import { Game } from '../models/Game';
 
 

@@ -2,16 +2,3 @@
     border: 0px solid red;
     margin: 24px 0
 }
-
-mat-spinner {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-::ng-deep {
-    .mat-progress-spinner circle, .mat-spinner circle {
-        stroke: #ff1900;
-    }
-}
