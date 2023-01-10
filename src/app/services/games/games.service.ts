@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { GAME_LIST_URL } from 'src/app/constants/api.constants';
-import { IGameResponse } from 'src/app/shared/models/Platform';
+import { IGame, IGameResponse } from 'src/app/shared/models/Platform';
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +23,7 @@ export class GamesService {
       .set('page_size', pageSize)
       .set('platforms', platform);
 
-    return this.http.get<IGameResponse>(GAME_LIST_URL, {
+    return this.http.get<IGameResponse>(`${GAME_LIST_URL}?`, {
       params: params
     });
   }
@@ -38,14 +38,10 @@ export class GamesService {
   // }
 
 
-  // // Used for the Product component whenever a game is selected
-  // fetchSelectedGame(gameId: Number): Observable<VideoGameDetails> {
-  //   let params = new HttpParams().set('game_id', gameId.toString());
-
-  //   return this.http.get<VideoGameDetails>(`${env.BASE_URL}/game`, {
-  //     params: params
-  //   });
-  // }
+  // Used for the Product component whenever a game is selected
+  public fetchSelectedGame(gameID: number): Observable<any> {
+    return this.http.get<any>(`${GAME_LIST_URL}/${gameID}?`);
+  }
 
 
   // // Used by the search bar to fetch a game by what the user types
@@ -63,15 +59,15 @@ export class GamesService {
   // }
   
 
-  // // Returns the price hard-coded into this service
-  // getPrice(): number {
-  //   return this.price;
-  // }
+  // Returns the price hard-coded into this service
+  public getPrice(): number {
+    return this.price;
+  }
 
 
-  // // Used when selecting any game and assigned its platform and id to the route params.
-  // viewSelectedGame(game: Game) {
-  //   this.router.navigate([game.platform, game.game_id]);
-  // }
+  // Used when selecting any game and assigned its platform and id to the route params.
+  public viewSelectedGame(platform: string, gameID: number) {
+    this.router.navigate([platform, gameID]);
+  }
   
 }

@@ -46,8 +46,8 @@ export class HomeComponent implements OnInit, OnDestroy {
     });
   }
 
-  public onGameSelect(game: IGame) {
-    // this._gameService.viewSelectedGame(game);
+  public onGameSelect(platform: string, game: IGame) {
+    this._gameService.viewSelectedGame(platform, game.id);
   }
 
   public ngOnDestroy(): void {

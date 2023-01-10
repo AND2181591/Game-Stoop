@@ -40,8 +40,8 @@ export class XboxSXComponent implements OnInit, OnDestroy {
     });
   }
 
-  public onGameSelect(game: IGame) {
-    // this.gameService.viewSelectedGame(game);
+  public onGameSelect(platform: string, game: IGame) {
+    this._gameService.viewSelectedGame(platform, game.id);
   }
 
   public ngOnDestroy(): void {

@@ -1,7 +1,21 @@
+mat-spinner {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+::ng-deep {
+    .mat-progress-spinner circle, .mat-spinner circle {
+        stroke: #ff1900;
+    }
+}
+
 .container {
     border: solid 0px red;
     display: flex;
     justify-content: center;
+    flex-direction: column;
     margin-top: 50px;
 
     &-small {
@@ -11,20 +25,19 @@
 
     &--game {
         border: solid 0px red;
-        width: 30%;
         min-width: 227px;
         display: flex;
         flex-direction: column;
         align-items: center;
         margin-right: 10px;
 
+        & img {
+            width: 100%;
+            max-width: 400px;
+        }
+
         &-small {
             margin-right: 0;
-        }
-    
-        &__image {
-            width: 150px;
-            height: 188px;
         }
     
         &__description {
@@ -34,12 +47,17 @@
     
     &--details {
         border: solid 0px red;
-        width: 40%;
+        width: 100%;
         min-width: 318px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        gap: 10px;
         margin-bottom: 16px;
+
+        &__title {
+            text-align: center;
+        }
 
         &-small {
             text-align: center;
@@ -47,26 +65,27 @@
             margin: 5px;
         }
 
-        &__title h2 {
-            margin: 0;
-        }
-    
-        &__title h5 {
+        &__title h2, h5 {
             margin: 5px 0;
         }
-    
-        &__btn--cart button {
-            cursor: pointer;
-            color: #fff;
-            font-weight: 600;
-            background-color: #ff1900;
-            border: none;
-            padding: 10px;
-            width: 50%;
 
-            &:hover {
-                background-color: #c01300;
-                transition: .3s;
+        &__btn--cart {
+            display: flex;
+            justify-content: center;
+
+            & button {
+                cursor: pointer;
+                color: #fff;
+                font-weight: 600;
+                background-color: #ff1900;
+                border: none;
+                padding: 10px;
+                width: 50%;
+    
+                &:hover {
+                    background-color: #c01300;
+                    transition: .3s;
+                }
             }
         }
     }
