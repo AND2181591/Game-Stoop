@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { PLAYSTATION_5_ID } from '../constants/api.constants';
+import { HOME_PAGE_GAME_LIMIT } from '../constants/general.constants';
 
 import { GamesService } from '../services/games/games.service';
 import { LoadingService } from '../services/loading/loading.service';
@@ -19,7 +20,6 @@ export class HomeComponent implements OnInit, OnDestroy {
   public ps4: IGame[] = [];
   public xboxSX: IGame[] = [];
   public xboxOne: IGame[] = [];
-
   public subscriptionKiller$: Subject<void> = new Subject<void>();
 
   constructor(
@@ -32,35 +32,21 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.fetchAllGames();
   }
 
-  public loadingCheck(): void {
+  private loadingCheck(): void {
     this._loadingService.stillLoading$.pipe( takeUntil(this.subscriptionKiller$) )
       .subscribe((loading) => this.isLoading = loading);
   }
 
-  public fetchAllGames(): void {
-    this._gameService.fetchGames(PLAYSTATION_5_ID).subscribe((response) => {
-      this.ps5 = response.results.filter(game => {
-        return game.platforms.filter(platform => platform.id === PLAYSTATION_5_ID);
-      });
+  private fetchAllGames(): void {
+    this._gameService.fetchGames(HOME_PAGE_GAME_LIMIT, PLAYSTATION_5_ID).pipe( takeUntil(this.subscriptionKiller$) )
+      .subscribe((response) => {
+        this.ps5 = response.results.filter(game => {
+            return game.platforms.filter(platform => platform.id === PLAYSTATION_5_ID);
+        });
     });
-    // this._gameService.fetchGames('ps5', '8').subscribe((results) => {
-    //   this.ps5 = results.ps5.data;
-    // });
-
-    // this._gameService.fetchGames('ps4', '8').subscribe((results) => {
-    //   this.ps4 = results.ps4.data;
-    // });
-
-    // this._gameService.fetchGames('xbox-series-x', '8').subscribe((results) => {
-    //   this.xboxSX = results['xbox-series-x'].data;
-    // });
-
-    // this._gameService.fetchGames('xbox-one', '8').subscribe((results) => {
-    //   this.xboxOne = results['xbox-one'].data;
-    // });
   }
 
-  onGameSelect(game: IGame) {
+  public onGameSelect(game: IGame) {
     // this._gameService.viewSelectedGame(game);
   }
 

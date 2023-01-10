@@ -1,5 +1,12 @@
-<h2>Playstation 4</h2>
-<hr>
-<app-featured-list 
-    [games]="games"
-    (gameSelect)="onGameSelect($event)"></app-featured-list>
+<mat-spinner 
+    *ngIf="isLoading"
+    [strokeWidth]="2" 
+    [diameter]="80"></mat-spinner>
+
+<div *ngIf="!isLoading" class="main-container">
+    <h2>Playstation 4</h2>
+    <hr>
+    <app-featured-list 
+        [games]="games"
+        (gameSelect)="onGameSelect($event)"></app-featured-list>
+</div>

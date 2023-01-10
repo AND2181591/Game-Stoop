@@ -7,8 +7,8 @@ import { IGame } from '../models/Platform';
   styleUrls: ['./featured-card.component.scss']
 })
 export class FeaturedCardComponent implements OnInit {
-  @Input() price: number = 0;
-  @Input() game: IGame = {} as IGame;
+  @Input() public price: number = 0;
+  @Input() public game: IGame = {} as IGame;
 
   constructor() { }
 

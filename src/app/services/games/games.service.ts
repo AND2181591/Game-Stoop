@@ -17,26 +17,15 @@ export class GamesService {
     private router: Router
   ) { }
 
-
   // Used in the Home and Platform pages to fetch the games by console.
-  public fetchGames(platform: number): Observable<IGameResponse> {
-    const params = new HttpParams().set('platforms', platform);
+  public fetchGames(pageSize: number, platform: number): Observable<IGameResponse> {
+    let params = new HttpParams()
+      .set('page_size', pageSize)
+      .set('platforms', platform);
+
     return this.http.get<IGameResponse>(GAME_LIST_URL, {
       params: params
     });
-
-    // return this.http.get<any>(`${GAME_LIST_URL}?key=${environment.API_KEY}`);
-    // let params = new HttpParams().set('platform', platform)
-    //   .set('count', count);
-
-    // return this.http.get<GamesByPlatform>(`${env.BASE_URL}/platform`, {
-    //   params: params
-    // })
-    // .pipe(
-    //   catchError((err) => {
-    //     return of(err);
-    //   })
-    // )
   }
 
   // // Used by the carousel in the product component to display recommendations
