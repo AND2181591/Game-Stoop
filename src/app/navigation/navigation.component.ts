@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
-import { CartService } from '../cart/cart.service';
+import { CartService } from '../services/cart/cart.service';
 
 @Component({
   selector: 'app-navigation',

@@ -13,15 +13,11 @@ import { environment as env } from "src/environments/environment";
 export class GameHttpInterceptor implements HttpInterceptor {
     constructor() {}
 
-    intercept(
-        req: HttpRequest<any>, 
-        next: HttpHandler
-    ): Observable<HttpEvent<any>> {
-        let headers = new HttpHeaders().set('x-rapidapi-key', env.API_KEY)
-        .set('x-rapidapi-host', 'whatoplay.p.rapidapi.com');
-
+    intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+        const url = req.url;
+        const keyUrlAppend = `key=${env.API_KEY}`;
         const modifiedReq = req.clone({
-            headers: headers
+            url: url + keyUrlAppend
         })
         return next.handle(modifiedReq);
     }

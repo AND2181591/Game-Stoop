@@ -1,10 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
-import { map } from 'rxjs/operators';
-
 import { GamesService } from 'src/app/services/games/games.service';
-import { Game } from 'src/app/shared/models/Game';
-
+import { IGame } from 'src/app/shared/models/Platform';
 
 @Component({
   selector: 'app-xbox-one',
@@ -12,19 +8,19 @@ import { Game } from 'src/app/shared/models/Game';
   styleUrls: ['./xbox-one.component.scss']
 })
 export class XboxOneComponent implements OnInit {
-  games: Game[] = [];
+  games: IGame[] = [];
 
   constructor(private gameService: GamesService) { }
 
   ngOnInit(): void {
-    this.gameService.fetchGames('xbox-one', '35')
-      .subscribe((results) => {
-        this.games = results['xbox-one'].data;
-      });
+    // this.gameService.fetchGames('xbox-one', '35')
+    //   .subscribe((results) => {
+    //     this.games = results['xbox-one'].data;
+    //   });
   }
 
-  onGameSelect(game: Game) {
-    this.gameService.viewSelectedGame(game);
+  onGameSelect(game: IGame) {
+    // this.gameService.viewSelectedGame(game);
   }
 
 }

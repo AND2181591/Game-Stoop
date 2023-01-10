@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 
 import { GamesService } from 'src/app/services/games/games.service';
 import { Game } from 'src/app/shared/models/Game';
-import { CartService } from '../cart.service';
+import { CartService } from '../../services/cart/cart.service';
 
 @Component({
   selector: 'app-cart',
@@ -25,7 +25,7 @@ export class CartComponent implements OnInit {
       this.games = results;
     });
     this.games = this.cartService.getCart();
-    this.price = this.gameService.getPrice();
+    // this.price = this.gameService.getPrice();
   }
 
   onRemove(index: number) {

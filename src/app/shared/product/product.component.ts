@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { CartService } from 'src/app/cart/cart.service';
+import { CartService } from '../../services/cart/cart.service';
 import { GamesService } from 'src/app/services/games/games.service';
 import { Game } from '../models/Game';
 
@@ -30,14 +30,14 @@ export class ProductComponent implements OnInit {
   }
 
   viewGame(id: number) {
-    this.gameService.fetchSelectedGame(id)
-      .subscribe((results) => {
-        for (let k in results) {
-          const result = results[k];
-          this.game = result.data;
-          break;
-        }
-      });
+    // this.gameService.fetchSelectedGame(id)
+    //   .subscribe((results) => {
+    //     for (let k in results) {
+    //       const result = results[k];
+    //       this.game = result.data;
+    //       break;
+    //     }
+    //   });
   }
 
   onAddToCart() {

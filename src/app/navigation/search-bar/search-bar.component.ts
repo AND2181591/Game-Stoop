@@ -21,34 +21,34 @@ export class SearchBarComponent implements OnInit {
   constructor(private gameService: GamesService) { }
 
   ngOnInit(): void {
-    this.searchForm.get('searchGame')?.valueChanges
-      .pipe(
-        debounceTime(100), 
-        distinctUntilChanged()
-      )
-      .subscribe((query) => {this.gameService.fetchGameByName(query)
-        .pipe(
-          map((results) => {
-            let filteredRes: Game[] = [];
+    // this.searchForm.get('searchGame')?.valueChanges
+    //   .pipe(
+    //     debounceTime(100), 
+    //     distinctUntilChanged()
+    //   )
+    //   .subscribe((query) => {this.gameService.fetchGameByName(query)
+    //     .pipe(
+    //       map((results) => {
+    //         let filteredRes: Game[] = [];
 
-            for (let i = 0; i < results.length; i++) {
-              const platform = results[i].platform;
-              if (platform === 'PS5' || platform === 'PS4' || 
-                platform === 'XB1' || platform === 'Series X') {
-                filteredRes.push(results[i]);
-              }
-            }
-            return filteredRes;
-          })
-        )
-        .subscribe((results) => {
-          this.gameResults = results;
-        })
-      });
+    //         for (let i = 0; i < results.length; i++) {
+    //           const platform = results[i].platform;
+    //           if (platform === 'PS5' || platform === 'PS4' || 
+    //             platform === 'XB1' || platform === 'Series X') {
+    //             filteredRes.push(results[i]);
+    //           }
+    //         }
+    //         return filteredRes;
+    //       })
+    //     )
+    //     .subscribe((results) => {
+    //       this.gameResults = results;
+    //     })
+    //   });
   }
 
   onSubmit(game: Game): void {
-    this.gameService.viewSelectedGame(game);
+    // this.gameService.viewSelectedGame(game);
     
     this.searchForm.reset();
   }

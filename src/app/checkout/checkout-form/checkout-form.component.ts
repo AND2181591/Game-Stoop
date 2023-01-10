@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { CartService } from 'src/app/cart/cart.service';
+import { CartService } from '../../services/cart/cart.service';
 import { DialogComponent } from 'src/app/shared/dialog/dialog.component';
 import { Game } from 'src/app/shared/models/Game';
 

@@ -2,7 +2,7 @@
     border: solid 0px red;
     min-width: 179px;
     max-width: 217px;
-    padding: 5px 0px;
+    padding: 5px;
 
     &:hover {
         box-shadow: .2px .2px 4px #888;
@@ -17,8 +17,8 @@
         justify-content: center;
 
         &__img {
-            width: 70%;
-            max-width: 150px;
+            width: 100%;
+            height: 121px;
         }
     }
 

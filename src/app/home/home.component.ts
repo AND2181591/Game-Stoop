@@ -1,10 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { PLAYSTATION_5_ID } from '../constants/api.constants';
 
 import { GamesService } from '../services/games/games.service';
 import { LoadingService } from '../services/loading/loading.service';
 import { Game } from '../shared/models/Game';
+import { IGame } from '../shared/models/Platform';
 
 @Component({
   selector: 'app-home',
@@ -13,10 +15,10 @@ import { Game } from '../shared/models/Game';
 })
 export class HomeComponent implements OnInit, OnDestroy {
   public isLoading = true;
-  public ps5: Game[] = [];
-  public ps4: Game[] = [];
-  public xboxSX: Game[] = [];
-  public xboxOne: Game[] = [];
+  public ps5: IGame[] = [];
+  public ps4: IGame[] = [];
+  public xboxSX: IGame[] = [];
+  public xboxOne: IGame[] = [];
 
   public subscriptionKiller$: Subject<void> = new Subject<void>();
 
@@ -36,6 +38,11 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   public fetchAllGames(): void {
+    this._gameService.fetchGames(PLAYSTATION_5_ID).subscribe((response) => {
+      this.ps5 = response.results.filter(game => {
+        return game.platforms.filter(platform => platform.id === PLAYSTATION_5_ID);
+      });
+    });
     // this._gameService.fetchGames('ps5', '8').subscribe((results) => {
     //   this.ps5 = results.ps5.data;
     // });
@@ -53,8 +60,8 @@ export class HomeComponent implements OnInit, OnDestroy {
     // });
   }
 
-  onGameSelect(game: Game) {
-    this._gameService.viewSelectedGame(game);
+  onGameSelect(game: IGame) {
+    // this._gameService.viewSelectedGame(game);
   }
 
   public ngOnDestroy(): void {

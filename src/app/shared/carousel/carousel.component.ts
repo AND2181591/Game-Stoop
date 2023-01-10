@@ -22,9 +22,9 @@ export class CarouselComponent implements OnInit {
     this.route.data.subscribe((result) => {
       const gamePlatform = this.platformInit(result.name);
 
-      this.gameService.fetchNewGames(gamePlatform).subscribe((results) => {
-        this.games = results[gamePlatform].data;
-      });
+      // this.gameService.fetchNewGames(gamePlatform).subscribe((results) => {
+      //   this.games = results[gamePlatform].data;
+      // });
     });
     
   }
@@ -41,7 +41,7 @@ export class CarouselComponent implements OnInit {
   }
 
   onGameSelect(game: Game): void {
-    this.gameService.viewSelectedGame(game);
+    // this.gameService.viewSelectedGame(game);
   }
 
 }

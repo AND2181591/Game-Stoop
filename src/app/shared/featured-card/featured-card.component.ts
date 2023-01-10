@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Game } from '../models/Game';
+import { IGame } from '../models/Platform';
 
 @Component({
   selector: 'app-featured-card',
@@ -8,7 +8,7 @@ import { Game } from '../models/Game';
 })
 export class FeaturedCardComponent implements OnInit {
   @Input() price: number = 0;
-  @Input() game: Game = {} as Game;
+  @Input() game: IGame = {} as IGame;
 
   constructor() { }
 

@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 
 import { Subject } from 'rxjs';
 
-import { GamesService } from '../services/games/games.service';
-import { Game } from '../shared/models/Game';
+import { GamesService } from '../games/games.service';
+import { Game } from '../../shared/models/Game';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +15,7 @@ export class CartService {
   constructor(private gameService: GamesService) { }
 
   addToCart(game: Game): void {
-    game.price = this.gameService.getPrice();
+    // game.price = this.gameService.getPrice();
     this.cart.push(game);
     this.getCart$.next([...this.cart]);
   }
