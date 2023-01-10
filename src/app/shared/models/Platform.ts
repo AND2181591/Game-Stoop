@@ -15,6 +15,11 @@ export enum Platforms {
 //     }
 // }
 
+export interface TransactionItem {
+    game: IGame;
+    price: number;
+}
+
 export interface IGameResponse {
     results: IGame[];
 }

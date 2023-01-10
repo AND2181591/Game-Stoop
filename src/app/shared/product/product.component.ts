@@ -50,7 +50,7 @@ export class ProductComponent implements OnInit, OnDestroy {
   }
 
   public onAddToCart() {
-    // this.cartService.addToCart(this.game);
+    this.cartService.addToCart(this.game);
   }
 
   public ngOnDestroy(): void {

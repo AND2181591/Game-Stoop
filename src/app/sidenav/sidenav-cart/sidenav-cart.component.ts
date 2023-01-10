@@ -5,6 +5,7 @@ import { CartService } from '../../services/cart/cart.service';
 import { GamesService } from 'src/app/services/games/games.service';
 
 import { Game } from 'src/app/shared/models/Game';
+import { TransactionItem } from 'src/app/shared/models/Platform';
 
 @Component({
   selector: 'app-sidenav-cart',
@@ -13,7 +14,7 @@ import { Game } from 'src/app/shared/models/Game';
 })
 export class SidenavCartComponent implements OnInit {
   @Output() close = new EventEmitter();
-  @Input() cart: Game[] = [];
+  @Input() cart: TransactionItem[] = [];
   total = 0;
 
   constructor(

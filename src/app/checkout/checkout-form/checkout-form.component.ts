@@ -7,6 +7,7 @@ import { DialogComponent } from 'src/app/shared/dialog/dialog.component';
 import { Game } from 'src/app/shared/models/Game';
 
 import { states } from '../states';
+import { TransactionItem } from 'src/app/shared/models/Platform';
 
 @Component({
   selector: 'app-checkout-form',
@@ -14,7 +15,7 @@ import { states } from '../states';
   styleUrls: ['./checkout-form.component.scss']
 })
 export class CheckoutFormComponent implements OnInit {
-  cart: Game[] = [];
+  cart: TransactionItem[] = [];
 
   states: string[] = [];
   checkoutForm = new FormGroup({

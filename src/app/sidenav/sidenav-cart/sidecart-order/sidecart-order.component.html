@@ -3,12 +3,12 @@
     <div class="order-inner">
         <img 
             class="order-inner__image"
-            [ngClass.lt-md]="'small__image'" [src]="game.box_art" alt="">
+            [ngClass.lt-md]="'small__image'" [src]="game.game.background_image" alt="">
 
         <div class="order-inner__details">
             <div 
                 class="order-inner__details__title"
-                [ngClass.lt-md]="'small__title'">{{ game.game_name }}</div>
+                [ngClass.lt-md]="'small__title'">{{ game.game.name }}</div>
             <button (click)="onRemove()">Remove</button>
             <!-- <div class="order-inner__details__count">
                 <button class="order-inner__details__count__btn">-</button>

@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 import { Game } from 'src/app/shared/models/Game';
+import { TransactionItem } from 'src/app/shared/models/Platform';
 
 @Component({
   selector: 'app-sidecart-order',
@@ -8,7 +9,7 @@ import { Game } from 'src/app/shared/models/Game';
   styleUrls: ['./sidecart-order.component.scss']
 })
 export class SidecartOrderComponent implements OnInit {
-  @Input() game: Game = {} as Game;
+  @Input() game: TransactionItem = {} as TransactionItem;
   @Output() remove = new EventEmitter();
 
   constructor() { }

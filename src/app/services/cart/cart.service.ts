@@ -4,27 +4,31 @@ import { Subject } from 'rxjs';
 
 import { GamesService } from '../games/games.service';
 import { Game } from '../../shared/models/Game';
+import { IGame, TransactionItem } from 'src/app/shared/models/Platform';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
-  private cart: Game[] = [];
-  getCart$ = new Subject<Game[]>();
+  private cart: TransactionItem[] = [];
+  public getCart$ = new Subject<TransactionItem[]>();
 
   constructor(private gameService: GamesService) { }
 
-  addToCart(game: Game): void {
-    // game.price = this.gameService.getPrice();
-    this.cart.push(game);
+  public addToCart(game: IGame): void {
+    const newTransaction: TransactionItem = {
+      game: game, 
+      price: this.gameService.getPrice()
+    };
+    this.cart.push(newTransaction);
     this.getCart$.next([...this.cart]);
   }
 
-  getCart(): Game[] {
+  public getCart(): TransactionItem[] {
     return [...this.cart];
   }
 
-  getCartTotal(): number {
+  public getCartTotal(): number {
     let total: number | undefined = 0;
     this.cart.forEach((game) => {
       total = game.price;
@@ -33,12 +37,12 @@ export class CartService {
     return total;
   }
 
-  removeFromCart(index: number): void {
+  public removeFromCart(index: number): void {
     this.cart.splice(index, 1);
     this.getCart$.next([...this.cart]);
   }
 
-  clearCart() {
+  public clearCart() {
     this.cart = [];
     this.getCart$.next([...this.cart]);
   }

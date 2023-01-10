@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 
 import { GamesService } from 'src/app/services/games/games.service';
 import { Game } from 'src/app/shared/models/Game';
+import { TransactionItem } from 'src/app/shared/models/Platform';
 import { CartService } from '../../services/cart/cart.service';
 
 @Component({
@@ -12,7 +13,7 @@ import { CartService } from '../../services/cart/cart.service';
 })
 export class CartComponent implements OnInit {
   price: number = 0;
-  games: Game[] = []
+  games: TransactionItem[] = []
 
   constructor(
     private cartService: CartService, 
