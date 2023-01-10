@@ -42,6 +42,12 @@ mat-spinner {
     
         &__description {
             border: solid 0px red;
+
+            & .genres {
+                display: flex;
+                gap: 10px;
+                align-items: center;
+            }
         }
     }
     

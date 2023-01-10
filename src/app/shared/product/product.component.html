@@ -14,8 +14,10 @@
             <img [src]="game.background_image" alt="">
         </div>
         <div fxHide.lt-sm class="container--game__description">
-            <h3>Product Description:</h3>
-            <!-- <p>{{ game.genres[0].name }}</p> -->
+            <div class="genres">
+                <h3>Product Description:</h3>
+                <p *ngFor="let genre of game.genres">{{ genre.name }}</p>
+            </div>
         </div>
     </div>
 
@@ -24,7 +26,7 @@
         [ngClass.lt-sm]="'container--details-small'">
         <div class="container--details__title">
             <h2 [ngClass.lt-sm]="'small-title'">{{ game.name }} - {{ game.name }}</h2>
-            <!-- <h5>{{ game.developers[0].name }}</h5> -->
+            <h5>{{ game.developers[0].name }}</h5>
             <h5>Playscore: {{ game.rating }}</h5>
             <h2 [ngClass.lt-sm]="'small-title'">$59.99</h2>
         </div>

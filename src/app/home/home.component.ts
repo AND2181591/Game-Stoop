@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { PLAYSTATION_5_ID } from '../constants/api.constants';
+import { PLAYSTATION_4_ID, PLAYSTATION_5_ID, XBOX_ONE_ID, XBOX_SERIES_X_ID } from '../constants/api.constants';
 import { HOME_PAGE_GAME_LIMIT } from '../constants/general.constants';
 
 import { GamesService } from '../services/games/games.service';
@@ -44,6 +44,27 @@ export class HomeComponent implements OnInit, OnDestroy {
             return game.platforms.filter(platform => platform.id === PLAYSTATION_5_ID);
         });
     });
+
+    // this._gameService.fetchGames(HOME_PAGE_GAME_LIMIT, PLAYSTATION_4_ID).pipe( takeUntil(this.subscriptionKiller$) )
+    //   .subscribe((response) => {
+    //     this.ps4 = response.results.filter(game => {
+    //         return game.platforms.filter(platform => platform.id === PLAYSTATION_4_ID);
+    //     });
+    // });
+
+    // this._gameService.fetchGames(HOME_PAGE_GAME_LIMIT, XBOX_SERIES_X_ID).pipe( takeUntil(this.subscriptionKiller$) )
+    //   .subscribe((response) => {
+    //     this.xboxSX = response.results.filter(game => {
+    //         return game.platforms.filter(platform => platform.id === XBOX_SERIES_X_ID);
+    //     });
+    // });
+
+    // this._gameService.fetchGames(HOME_PAGE_GAME_LIMIT, XBOX_ONE_ID).pipe( takeUntil(this.subscriptionKiller$) )
+    //   .subscribe((response) => {
+    //     this.xboxOne = response.results.filter(game => {
+    //         return game.platforms.filter(platform => platform.id === XBOX_ONE_ID);
+    //     });
+    // });
   }
 
   public onGameSelect(platform: string, game: IGame) {
