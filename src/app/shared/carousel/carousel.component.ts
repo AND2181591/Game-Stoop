@@ -1,47 +1,52 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+import { PLATFORM_PAGE_LIMIT } from 'src/app/constants/general.constants';
 import { GamesService } from 'src/app/services/games/games.service';
-import { Game } from '../models/Game';
-import { Platforms } from '../models/Platform';
+import { IGame } from '../models/Platform';
+import PlatformConversionUtil from '../utilities/platform-conversion.util';
 
 @Component({
   selector: 'app-carousel',
   templateUrl: './carousel.component.html',
   styleUrls: ['./carousel.component.scss']
 })
-export class CarouselComponent implements OnInit {
-  games: Game[] = [];
+export class CarouselComponent implements OnInit, OnDestroy {
+  private _subscriptionKiller$: Subject<void> = new Subject<void>();
+  public games: IGame[] = [];
+  public platform: string = '';
 
   constructor(
-    private gameService: GamesService, 
-    private route: ActivatedRoute
+    private _gameService: GamesService, 
+    private _route: ActivatedRoute
   ) { }
 
   
-  ngOnInit(): void {
-    this.route.data.subscribe((result) => {
-      const gamePlatform = this.platformInit(result.name);
+  public ngOnInit(): void {
+    this.carouselInit();
+  }
 
-      // this.gameService.fetchNewGames(gamePlatform).subscribe((results) => {
-      //   this.games = results[gamePlatform].data;
-      // });
+  public carouselInit(): void {
+    this._route.data.pipe( takeUntil(this._subscriptionKiller$) ).subscribe((result) => {
+      const platformID = PlatformConversionUtil.convertRouteToPlatformID(result.name);
+      this.platform = result.name; 
+
+      this._gameService.fetchGames(PLATFORM_PAGE_LIMIT, platformID).pipe( takeUntil(this._subscriptionKiller$) ).subscribe((response) => {
+        this.games = response.results.filter(game => {
+          return game.platforms.filter(platform => platform.id === platformID);
+        });
+      });
     });
-    
   }
 
-  platformInit(platform: string): Platforms {
-    const ps4 = Platforms[Platforms.ps4];
-    const xb1 = Platforms[Platforms['xbox-one']];
-
-    if (platform === 'PS5' || platform === 'PS4') {
-      return ps4;
-    } else {
-      return xb1;
-    }
+  public onGameSelect(gameID: number): void {
+    this._gameService.viewSelectedGame(this.platform, gameID);
   }
 
-  onGameSelect(game: Game): void {
-    // this.gameService.viewSelectedGame(game);
+  public ngOnDestroy(): void {
+    this._subscriptionKiller$.next();
+    this._subscriptionKiller$.complete();
   }
 
 }

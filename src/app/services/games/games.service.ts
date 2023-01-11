@@ -28,15 +28,6 @@ export class GamesService {
     });
   }
 
-  // // Used by the carousel in the product component to display recommendations
-  // fetchNewGames(platform: string): Observable<GamesByPlatform> {
-  //   let params = new HttpParams().set('platform', platform);
-
-  //   return this.http.get<GamesByPlatform>(`${env.BASE_URL}/new`, {
-  //     params: params
-  //   });
-  // }
-
 
   // Used for the Product component whenever a game is selected
   public fetchSelectedGame(gameID: number): Observable<any> {
