@@ -1,24 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { CartService } from '../../services/cart/cart.service';
 import { DialogComponent } from 'src/app/shared/dialog/dialog.component';
-import { Game } from 'src/app/shared/models/Game';
-
 import { states } from '../states';
 import { TransactionItem } from 'src/app/shared/models/Platform';
+import { takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-checkout-form',
   templateUrl: './checkout-form.component.html',
   styleUrls: ['./checkout-form.component.scss']
 })
-export class CheckoutFormComponent implements OnInit {
-  cart: TransactionItem[] = [];
-
-  states: string[] = [];
-  checkoutForm = new FormGroup({
+export class CheckoutFormComponent implements OnInit, OnDestroy {
+  private _subscriptionKiller$: Subject<void> = new Subject<void>();
+  public cart: TransactionItem[] = [];
+  public states: string[] = [];
+  public checkoutForm = new FormGroup({
     firstName: new FormControl('', Validators.required), 
     lastName: new FormControl('', Validators.required), 
     streetAddr: new FormControl('', Validators.required), 
@@ -31,22 +31,25 @@ export class CheckoutFormComponent implements OnInit {
 
 
   constructor(
-    private dialog: MatDialog, 
-    private cartService: CartService, 
-    private router: Router
+    private _dialog: MatDialog, 
+    private _cartService: CartService, 
+    private _router: Router
   ) { }
 
-  ngOnInit(): void {
-    this.states = states;
+  public ngOnInit(): void {
+    this.checkoutFormInit();
+  }
 
-    this.cartService.getCart$.subscribe((results) => {
+  private checkoutFormInit(): void {
+    this.states = states;
+    this._cartService.getCart$.pipe( takeUntil(this._subscriptionKiller$) ).subscribe((results) => {
       this.cart = results;
     });
     
-    this.cart = this.cartService.getCart();
-  }
+    this.cart = this._cartService.getCart();
+  } 
 
-  onCompleteOrder() {
+  public onCompleteOrder() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.data = {
@@ -54,13 +57,18 @@ export class CheckoutFormComponent implements OnInit {
       name: this.checkoutForm.get('firstName')?.value
     }
 
-    const dialogRef = this.dialog.open(DialogComponent, dialogConfig);
+    const dialogRef = this._dialog.open(DialogComponent, dialogConfig);
 
     dialogRef.afterClosed().subscribe(() => {
       this.checkoutForm.reset();
-      this.cartService.clearCart();
-      this.router.navigateByUrl('/');
+      this._cartService.clearCart();
+      this._router.navigateByUrl('/');
     });
+  }
+
+  public ngOnDestroy(): void {
+    this._subscriptionKiller$.next();
+    this._subscriptionKiller$.complete();
   }
 
 }

@@ -6,14 +6,14 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
   styleUrls: ['./sidenav-shop.component.scss']
 })
 export class SidenavShopComponent implements OnInit {
-  @Output() close = new EventEmitter();
+  @Output() public close = new EventEmitter();
 
   constructor() { }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
   }
 
-  onClose() {
+  public onClose() {
     this.close.emit();
   }
 }

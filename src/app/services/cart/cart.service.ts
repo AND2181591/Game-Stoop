@@ -3,34 +3,34 @@ import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 
 import { GamesService } from '../games/games.service';
-import { Game } from '../../shared/models/Game';
 import { IGame, TransactionItem } from 'src/app/shared/models/Platform';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
-  private cart: TransactionItem[] = [];
+  private _cart: TransactionItem[] = [];
   public getCart$ = new Subject<TransactionItem[]>();
 
   constructor(private gameService: GamesService) { }
 
-  public addToCart(game: IGame): void {
+  public addToCart(game: IGame, platform: string): void {
     const newTransaction: TransactionItem = {
       game: game, 
-      price: this.gameService.getPrice()
+      price: this.gameService.getPrice(), 
+      platform: platform
     };
-    this.cart.push(newTransaction);
-    this.getCart$.next([...this.cart]);
+    this._cart.push(newTransaction);
+    this.getCart$.next([...this._cart]);
   }
 
   public getCart(): TransactionItem[] {
-    return [...this.cart];
+    return [...this._cart];
   }
 
   public getCartTotal(): number {
     let total: number | undefined = 0;
-    this.cart.forEach((game) => {
+    this._cart.forEach((game) => {
       total = game.price;
     });
 
@@ -38,12 +38,12 @@ export class CartService {
   }
 
   public removeFromCart(index: number): void {
-    this.cart.splice(index, 1);
-    this.getCart$.next([...this.cart]);
+    this._cart.splice(index, 1);
+    this.getCart$.next([...this._cart]);
   }
 
   public clearCart() {
-    this.cart = [];
-    this.getCart$.next([...this.cart]);
+    this._cart = [];
+    this.getCart$.next([...this._cart]);
   }
 }

@@ -6,6 +6,7 @@ import { IGame } from '../models/Platform';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { LoadingService } from 'src/app/services/loading/loading.service';
+import PlatformConversionUtil from '../utilities/platform-conversion.util';
 
 @Component({
   selector: 'app-product',
@@ -15,6 +16,7 @@ import { LoadingService } from 'src/app/services/loading/loading.service';
 export class ProductComponent implements OnInit, OnDestroy {
   public isLoading = true;
   public game: IGame = {} as IGame;
+  public platform: string = '';
   private _subscriptionKiller$: Subject<void> = new Subject<void>();
 
   constructor(
@@ -38,6 +40,8 @@ export class ProductComponent implements OnInit, OnDestroy {
     const gameId = this.route.snapshot.params['gameId'];
     this.route.params.pipe( takeUntil(this._subscriptionKiller$) ).subscribe((param: Params) => {
       const id = param['gameId'];
+      const platformRoute = this.route.snapshot.data['name'];
+      this.platform = PlatformConversionUtil.convertRouteToPlatformDisplay(platformRoute);
       this.viewGame(id);
     });
 
@@ -50,7 +54,7 @@ export class ProductComponent implements OnInit, OnDestroy {
   }
 
   public onAddToCart() {
-    this.cartService.addToCart(this.game);
+    this.cartService.addToCart(this.game, this.platform);
   }
 
   public ngOnDestroy(): void {

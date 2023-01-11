@@ -10,7 +10,7 @@ import { IGame, IGameResponse } from 'src/app/shared/models/Platform';
 })
 export class GamesService {
 
-  private price = 59.99;
+  private _price = 59.99;
 
   constructor(
     private http: HttpClient, 
@@ -61,7 +61,7 @@ export class GamesService {
 
   // Returns the price hard-coded into this service
   public getPrice(): number {
-    return this.price;
+    return this._price;
   }
 
 

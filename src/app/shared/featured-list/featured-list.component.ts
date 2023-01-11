@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Game } from '../models/Game';
 import { IGame } from '../models/Platform';
 
 @Component({
@@ -8,16 +7,16 @@ import { IGame } from '../models/Platform';
   styleUrls: ['./featured-list.component.scss']
 })
 export class FeaturedListComponent implements OnInit {
-  @Input() price: number = 0;
-  @Input() games: IGame[] = [];
-  @Output() gameSelect = new EventEmitter<IGame>();
+  @Input() public price: number = 0;
+  @Input() public games: IGame[] = [];
+  @Output() public gameSelect = new EventEmitter<IGame>();
 
   constructor() { }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
   }
 
-  onGameSelect(game: IGame) {
+  public onGameSelect(game: IGame) {
     this.gameSelect.emit(game);
   }
 }

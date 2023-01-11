@@ -6,7 +6,6 @@ import { HOME_PAGE_GAME_LIMIT } from '../constants/general.constants';
 
 import { GamesService } from '../services/games/games.service';
 import { LoadingService } from '../services/loading/loading.service';
-import { Game } from '../shared/models/Game';
 import { IGame } from '../shared/models/Platform';
 
 @Component({
@@ -20,7 +19,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   public ps4: IGame[] = [];
   public xboxSX: IGame[] = [];
   public xboxOne: IGame[] = [];
-  public subscriptionKiller$: Subject<void> = new Subject<void>();
+  private _subscriptionKiller$: Subject<void> = new Subject<void>();
 
   constructor(
     private _gameService: GamesService, 
@@ -33,33 +32,33 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   private loadingCheck(): void {
-    this._loadingService.stillLoading$.pipe( takeUntil(this.subscriptionKiller$) )
+    this._loadingService.stillLoading$.pipe( takeUntil(this._subscriptionKiller$) )
       .subscribe((loading) => this.isLoading = loading);
   }
 
   private fetchAllGames(): void {
-    this._gameService.fetchGames(HOME_PAGE_GAME_LIMIT, PLAYSTATION_5_ID).pipe( takeUntil(this.subscriptionKiller$) )
+    this._gameService.fetchGames(HOME_PAGE_GAME_LIMIT, PLAYSTATION_5_ID).pipe( takeUntil(this._subscriptionKiller$) )
       .subscribe((response) => {
         this.ps5 = response.results.filter(game => {
             return game.platforms.filter(platform => platform.id === PLAYSTATION_5_ID);
         });
     });
 
-    // this._gameService.fetchGames(HOME_PAGE_GAME_LIMIT, PLAYSTATION_4_ID).pipe( takeUntil(this.subscriptionKiller$) )
+    // this._gameService.fetchGames(HOME_PAGE_GAME_LIMIT, PLAYSTATION_4_ID).pipe( takeUntil(this._subscriptionKiller$) )
     //   .subscribe((response) => {
     //     this.ps4 = response.results.filter(game => {
     //         return game.platforms.filter(platform => platform.id === PLAYSTATION_4_ID);
     //     });
     // });
 
-    // this._gameService.fetchGames(HOME_PAGE_GAME_LIMIT, XBOX_SERIES_X_ID).pipe( takeUntil(this.subscriptionKiller$) )
+    // this._gameService.fetchGames(HOME_PAGE_GAME_LIMIT, XBOX_SERIES_X_ID).pipe( takeUntil(this._subscriptionKiller$) )
     //   .subscribe((response) => {
     //     this.xboxSX = response.results.filter(game => {
     //         return game.platforms.filter(platform => platform.id === XBOX_SERIES_X_ID);
     //     });
     // });
 
-    // this._gameService.fetchGames(HOME_PAGE_GAME_LIMIT, XBOX_ONE_ID).pipe( takeUntil(this.subscriptionKiller$) )
+    // this._gameService.fetchGames(HOME_PAGE_GAME_LIMIT, XBOX_ONE_ID).pipe( takeUntil(this._subscriptionKiller$) )
     //   .subscribe((response) => {
     //     this.xboxOne = response.results.filter(game => {
     //         return game.platforms.filter(platform => platform.id === XBOX_ONE_ID);
@@ -72,8 +71,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   public ngOnDestroy(): void {
-    this.subscriptionKiller$.next();
-    this.subscriptionKiller$.complete();
+    this._subscriptionKiller$.next();
+    this._subscriptionKiller$.complete();
   }
 }
 

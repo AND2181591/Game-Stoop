@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Game } from 'src/app/shared/models/Game';
 import { TransactionItem } from 'src/app/shared/models/Platform';
 
 @Component({
@@ -8,16 +7,16 @@ import { TransactionItem } from 'src/app/shared/models/Platform';
   styleUrls: ['./cart-item.component.scss']
 })
 export class CartItemComponent implements OnInit {
-  @Input() game: TransactionItem = {} as TransactionItem;
-  @Input() price: number = 0;
-  @Output() remove = new EventEmitter();
+  @Input() public game: TransactionItem = {} as TransactionItem;
+  @Input() public price: number = 0;
+  @Output() public remove = new EventEmitter();
 
   constructor() { }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
   }
 
-  onRemove() {
+  public onRemove() {
     this.remove.emit();
   }
 

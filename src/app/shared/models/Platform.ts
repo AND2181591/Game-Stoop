@@ -18,6 +18,7 @@ export enum Platforms {
 export interface TransactionItem {
     game: IGame;
     price: number;
+    platform?: string;
 }
 
 export interface IGameResponse {

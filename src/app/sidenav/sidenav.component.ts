@@ -6,17 +6,17 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./sidenav.component.scss']
 })
 export class SidenavComponent implements OnInit {
-  @Input() topHeader: string = '';
-  @Input() bigHeader: string = '';
-  @Input() cart: [] = [];
-  @Output() close = new EventEmitter();
+  @Input() public topHeader: string = '';
+  @Input() public bigHeader: string = '';
+  @Input() public cart: [] = [];
+  @Output() public close = new EventEmitter();
 
   constructor() { }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
   }
 
-  onClose() {
+  public onClose() {
     this.close.emit();
   }
 }

@@ -12,8 +12,8 @@ interface Order {
   styleUrls: ['./dialog.component.scss']
 })
 export class DialogComponent implements OnInit {
-  order: number = 0;
-  name: string = '';
+  public order: number = 0;
+  public name: string = '';
 
   constructor(
     private dialogRef: MatDialogRef<DialogComponent>, 
@@ -23,10 +23,10 @@ export class DialogComponent implements OnInit {
     this.name = data.name;
   }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
   }
 
-  close() {
+  public close() {
     this.dialogRef.close();
   }
 }
