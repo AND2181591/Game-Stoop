@@ -11,13 +11,11 @@
     <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
         <mat-option 
             *ngFor="let game of gameResults"
-            [value]="game.game_name"
+            [value]="game.name"
             (click)="onSubmit(game)">
             <div class="search__options">
-                <img [src]="game.box_art" alt="">
-                <div class="search__options__name">
-                    {{ game.game_name }} - {{ game.platform }}
-                </div>
+                <img [src]="game.background_image" [alt]="game.name">
+                <div class="search__options__name">{{ game.name }}</div>
             </div> 
         </mat-option>
     </mat-autocomplete>

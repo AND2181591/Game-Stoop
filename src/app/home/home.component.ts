@@ -44,26 +44,26 @@ export class HomeComponent implements OnInit, OnDestroy {
         });
     });
 
-    // this._gameService.fetchGames(HOME_PAGE_GAME_LIMIT, PLAYSTATION_4_ID).pipe( takeUntil(this._subscriptionKiller$) )
-    //   .subscribe((response) => {
-    //     this.ps4 = response.results.filter(game => {
-    //         return game.platforms.filter(platform => platform.id === PLAYSTATION_4_ID);
-    //     });
-    // });
+    this._gameService.fetchGames(HOME_PAGE_GAME_LIMIT, PLAYSTATION_4_ID).pipe( takeUntil(this._subscriptionKiller$) )
+      .subscribe((response) => {
+        this.ps4 = response.results.filter(game => {
+            return game.platforms.filter(platform => platform.id === PLAYSTATION_4_ID);
+        });
+    });
 
-    // this._gameService.fetchGames(HOME_PAGE_GAME_LIMIT, XBOX_SERIES_X_ID).pipe( takeUntil(this._subscriptionKiller$) )
-    //   .subscribe((response) => {
-    //     this.xboxSX = response.results.filter(game => {
-    //         return game.platforms.filter(platform => platform.id === XBOX_SERIES_X_ID);
-    //     });
-    // });
+    this._gameService.fetchGames(HOME_PAGE_GAME_LIMIT, XBOX_SERIES_X_ID).pipe( takeUntil(this._subscriptionKiller$) )
+      .subscribe((response) => {
+        this.xboxSX = response.results.filter(game => {
+            return game.platforms.filter(platform => platform.id === XBOX_SERIES_X_ID);
+        });
+    });
 
-    // this._gameService.fetchGames(HOME_PAGE_GAME_LIMIT, XBOX_ONE_ID).pipe( takeUntil(this._subscriptionKiller$) )
-    //   .subscribe((response) => {
-    //     this.xboxOne = response.results.filter(game => {
-    //         return game.platforms.filter(platform => platform.id === XBOX_ONE_ID);
-    //     });
-    // });
+    this._gameService.fetchGames(HOME_PAGE_GAME_LIMIT, XBOX_ONE_ID).pipe( takeUntil(this._subscriptionKiller$) )
+      .subscribe((response) => {
+        this.xboxOne = response.results.filter(game => {
+            return game.platforms.filter(platform => platform.id === XBOX_ONE_ID);
+        });
+    });
   }
 
   public onGameSelect(platform: string, game: IGame) {
