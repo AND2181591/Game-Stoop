@@ -32,7 +32,7 @@
             [ngClass.lt-sm]="'small-icon__cart'" 
             class="toolbar__icons__cart">
             <span 
-                [matBadge]="cartLength" 
+                [matBadge]="cartLength > 0 ? cartLength.toString() : ''" 
                 matBadgeOverlap="true">
                 shopping_cart
             </span>
